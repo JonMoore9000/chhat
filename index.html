@@ -8,6 +8,7 @@
 <body>
     
     <div id="sign-up"></div>
+    <div id="user-btn"></div>
 
     <script>
         // Get this URL and Publishable Key from the Clerk Dashboard
@@ -20,22 +21,18 @@
         script.setAttribute('data-clerk-frontend-api', frontendApi);
         script.setAttribute('data-clerk-publishable-key', clerkPublishableKey);
         script.async = true;
-        script.src = `https://${frontendApi}/npm/@clerk/clerk-js${version}/dist/clerk.browser.js`;
+        script.src = `${frontendApi}/npm/@clerk/clerk-js${version}/dist/clerk.browser.js`;
        
         // Adds listener to initialize ClerkJS after it's loaded
         script.addEventListener('load', async function () {
             await window.Clerk.load({});
-            const signUpComponent = document.querySelector('#sign-up');
-            window.Clerk.mountSignUp(signUpComponent, {});
-
-            window.Clerk.mountUserButton(userButtonComponent, {
-                appearance: {
-                  baseTheme: dark
-                }
-              });
-
+            
+            const userButtonComponent = document.querySelector('#user-btn');
             if(Clerk.user) {
                 console.log('in')
+                window.Clerk.mountUserButton(userButtonComponent, {});
+            } else {
+                const signUpComponent = document.querySelector('#sign-up');
             }
             
         });
