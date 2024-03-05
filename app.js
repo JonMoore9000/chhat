@@ -6,22 +6,8 @@ const now = new Date();
 let currentDateTime = now.toLocaleString();
 console.log(now)
 
-// send post to db
-const sendPost = (post) => {
-    $.ajax({
-        url: 'https://game-db.onrender.com/chat/',
-        type: "POST",
-        data: JSON.stringify({
-            content: post,
-            date: currentDateTime,
-            user: user
-        }),
-        contentType: "application/json",
-        complete: () => console.log("post sent to db")
-      })
-}
-
 $('#post-lightbox').hide()
+$('#reply-lightbox').hide()
 $('#profile-wrap').hide()
 $('#sign-in').hide()
 $('.signup-footer').hide()
@@ -34,6 +20,10 @@ $('.close-post').on('click', () => {
     $('#post-lightbox').hide()
 })
 
+$('.close-reply').on('click', () => {
+    $('#reply-lightbox').hide()
+})
+
 $('.close-profile').on('click', () => {
     $('#profile-wrap').hide()
 })
@@ -42,20 +32,13 @@ $('#open-profile').on('click', () => {
     $('#profile-wrap').show()
 })
 
-$('#signin-btn').on('click', (e) => {
-    e.preventDefault()
-    $('#sign-up').hide()
-    $('#sign-in').show()
-    $('.signup-footer').show()
-    $('.signin-footer').hide()
-})
+let reply_id;
+let reply_array = []
 
-$('#signup-btn').on('click', (e) => {
-    e.preventDefault()
-    $('#sign-up').show()
-    $('#sign-in').hide()
-    $('.signup-footer').hide()
-    $('.signin-footer').show()
+$(document).on('click', '.fa-message', (e) => {
+    reply_id = $(e.currentTarget).data("num");
+    console.log(reply_id)
+    $('#reply-lightbox').show()
 })
 
 $('#submit-post').on('click', () => {
@@ -74,9 +57,81 @@ $('#submit-post').on('click', () => {
     }
 })
 
-$('#delete-posts').on('click', () => {
-    deletePost()
+// send post to db
+const sendPost = (post) => {
+    $.ajax({
+        url: 'https://game-db.onrender.com/chat/',
+        type: "POST",
+        data: JSON.stringify({
+            content: post,
+            date: currentDateTime,
+            user: user,
+        }),
+        contentType: "application/json",
+        complete: () => console.log("post sent to db")
+      })
+}
+
+$('#submit-reply').on('click', () => {
+    let reply = tinymce.activeEditor.getContent({ format: 'text' });
+    let id = reply_id;
+    let replyObj = {
+        content: reply
+    }
+
+    const getReplies = (data) => {
+        console.log(data)
+        data.map((item) => {
+            if(id == item._id) {
+                console.log(item.replies)
+                /*let replyObj = {
+                    content: item.replies
+                }*/
+                
+                for (var content in item.replies) {
+                    console.log(item.replies[content]);
+                    reply_array.push(item.replies[content])
+                }
+            } else {
+                console.log('no replies found')
+            }
+        })
+            
+            console.log(reply_array)
+    }
+    
+    getPost(getReplies)
+
+    setTimeout(() => {
+        reply_array.push(replyObj)
+    }, 500)
+    
+    console.log(replyObj)
+    if(reply == '') {
+        alert('no reply')
+    } else {
+        sendReply(id)
+        $('#submit-reply').text('Processing...')
+        setTimeout(() => {
+            location.reload()
+        }, 2500)
+    }
 })
+
+// send reply to db
+const sendReply = (id) => {
+    setTimeout(() => {
+        $.ajax({
+            url: 'https://game-db.onrender.com/chat/' + id,
+            type: "PATCH",
+            data: JSON.stringify({
+                replies: reply_array
+            }),
+            contentType: "application/json",
+            complete: () => console.log("reply sent to db")
+          })
+    }, 1000)
+}
 
 // sort array by power
 function byDate( a, b ) {
@@ -103,22 +158,47 @@ const getPost = (callback) => {
       })
 }
 
+$('.thread').hide()
+
 const showPost = (data) => {
     console.log(data)
     data.reverse()
+    $('.thread').hide()
     //let ordered = data.sort(custom_sort)
     //console.log(ordered)
     let posts = ''
+    
     posts = data.map((item) => {
-        //console.log(item.content)
-        return `<div>
-        <p class="username">${item.user}</p>
-        <p class="content">${item.content}</p>
+
+        let reply = ''
+
+        for (let i = 0; i < item.replies.length; i++) {
+            if(item.replies[i].content) {
+                reply += '<p class="reply">' + item.replies[i].content + '</p>';
+            }
+        }
+        
+
+        return `<div class="post-body">
+        <div class="post-meta">
+        <p class="username">${item.user}</p> 
+        <i class="fa-regular fa-grip-dots"></i>
         <p class="date">${item.date}</p>
+        </div>
+        <p class="content">${item.content}</p>
+        <i data-num="${item._id}" class="fa-sharp fa-thin fa-message"></i>
+        <i class="fa-thin fa-angle-down"></i>
+        <div class="thread">${reply}</div>
         </div>
         `
     })
     $('#feed-wrapper').html(posts)
 }
 
+$(document).on('click', '.fa-angle-down', (e) => {
+    console.log('test')
+    $(e.currentTarget).closest('.post-body').find('.thread').slideToggle()
+})
+
+//getPost(showReplies)
 getPost(showPost)

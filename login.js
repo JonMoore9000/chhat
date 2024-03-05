@@ -18,6 +18,7 @@ script.addEventListener('load', async function () {
     const signUpComponent = document.querySelector('#sign-up');
     const signInComponent = document.querySelector('#sign-in');
     const userProfileComponent = document.querySelector('#profile');
+    window.Clerk.mountSignUp(signUpComponent, {});
 
     if(Clerk.user) {
         console.log('in')
@@ -30,11 +31,30 @@ script.addEventListener('load', async function () {
 
         $('#logoff').on('click', () => {
           window.Clerk.signOut();
-          window.location = '/index.html';
+          window.location = 'index.html';
         })
     } else {
-      window.Clerk.mountSignUp(signUpComponent, {});
-      window.Clerk.mountSignIn(signInComponent, {});
+      $('#signin-btn').on('click', (e) => {
+        e.preventDefault()
+        window.Clerk.unmountSignUp(signUpComponent, {});
+        window.Clerk.mountSignIn(signInComponent, {
+          redirectUrl: 'app.html'
+        });
+        $('#sign-up').hide()
+        $('#sign-in').show()
+        $('.signup-footer').show()
+        $('.signin-footer').hide()
+    })
+    
+      $('#signup-btn').on('click', (e) => {
+          e.preventDefault()
+          window.Clerk.unmountSignIn(signInComponent, {});
+          window.Clerk.mountSignUp(signUpComponent, {});
+          $('#sign-up').show()
+          $('#sign-in').hide()
+          $('.signup-footer').hide()
+          $('.signin-footer').show()
+      })
     }
     
 });

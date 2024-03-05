@@ -14,6 +14,10 @@ body {
     margin: 0;
 }
 
+.hidden {
+    display: none
+}
+
 #main {
     max-width: 1100px;
     margin: auto;
@@ -89,7 +93,8 @@ body {
 }
 
 #sign-up label, #sign-up .cl-footerActionText, #sign-up .cl-footerActionLink,
-#sign-in label, #sign-in .cl-footerActionText, #sign-in .cl-footerActionLink {
+#sign-in label, #sign-in .cl-footerActionText, #sign-in .cl-footerActionLink,
+#sign-in .cl-identityPreviewText  {
     color: #fff
 }
 
@@ -130,7 +135,7 @@ body {
     background: #888;
   }
 
-#post-lightbox {
+#post-lightbox, #reply-lightbox {
     position: absolute;
     left: 0;
     top: 0;
@@ -149,7 +154,7 @@ input {
     width: 100%;
 }
 
-#create-post {
+#create-post, #create-reply {
     width: calc(100% - 80px);
     margin: auto;
     position: relative;
@@ -247,26 +252,43 @@ input {
     z-index: 5;
 }
 
-#submit-post:hover, #delete-posts:hover, #open-lightbox:hover, #open-profile:hover {
+#submit-post:hover, #delete-posts:hover, #open-lightbox:hover, #open-profile:hover, #logoff:hover {
     background-color: #555;
     cursor: pointer;
 }
 
-#feed-wrapper div {
-    padding: 40px;
+#feed-wrapper .post-body {
+    padding: 20px;
     border-bottom: 1px solid #333;
     width: 100%;
     margin: 0 0 10px;
 }
 
+.post-meta {
+    display: flex;
+}
+
 .content {
-    font-size: 18px;
     margin: 0 0 10px;
     display: block;
 }
 
 #feed-wrapper a {
     color: #fff
+}
+
+.fa-grip-dots {
+    color: #888;
+    margin: 0 10px;
+}
+
+.fa-message, .fa-angle-down {
+    color: #888;
+}
+
+.fa-message:hover, .fa-angle-down:hover {
+    color: #fff;
+    cursor: pointer;
 }
 
 .date {
@@ -289,4 +311,10 @@ input {
     width: 100px;
     padding: 5px;
     border: 1px solid #aaa
+}
+
+.reply {
+    padding: 10px;
+    background: #252525;
+    margin: 10px 0;
 }

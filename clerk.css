@@ -7,10 +7,18 @@
 .cl-userButtonPopoverActionButtonIcon, .cl-internal-wkkub3, .cl-header,
 .cl-headerSubtitle, .cl-profileSectionPrimaryButton, .cl-profileSectionTitleText,
 .cl-internal-l1ab9q, .cl-accordionTriggerButton, .cl-headerTitle, .cl-navbarButton,
-.cl-internal-3vf5mz, .cl-internal-fqx4fd {
+.cl-internal-3vf5mz, .cl-internal-fqx4fd, .cl-formFieldAction {
     color: #fff;
 }
 
 .cl-internal-1lg4ob1 {
     background: rgba(255, 255, 255, .1);
+}
+
+.cl-formButtonPrimary  {
+    background-color: #028090;
+}
+
+.cl-formButtonPrimary:hover  {
+    background-color: #00a896;
 }
