@@ -23,6 +23,8 @@ const sendPost = (post) => {
 
 $('#post-lightbox').hide()
 $('#profile-wrap').hide()
+$('#sign-in').hide()
+$('.signup-footer').hide()
 
 $('#open-lightbox').on('click', () => {
     $('#post-lightbox').show()
@@ -38,6 +40,22 @@ $('.close-profile').on('click', () => {
 
 $('#open-profile').on('click', () => {
     $('#profile-wrap').show()
+})
+
+$('#signin-btn').on('click', (e) => {
+    e.preventDefault()
+    $('#sign-up').hide()
+    $('#sign-in').show()
+    $('.signup-footer').show()
+    $('.signin-footer').hide()
+})
+
+$('#signup-btn').on('click', (e) => {
+    e.preventDefault()
+    $('#sign-up').show()
+    $('#sign-in').hide()
+    $('.signup-footer').hide()
+    $('.signin-footer').show()
 })
 
 $('#submit-post').on('click', () => {

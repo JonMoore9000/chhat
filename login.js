@@ -16,7 +16,7 @@ script.addEventListener('load', async function () {
     
     const userButtonComponent = document.querySelector('#user-btn');
     const signUpComponent = document.querySelector('#sign-up');
-    const signInComponent = document.querySelector('#sign-up');
+    const signInComponent = document.querySelector('#sign-in');
     const userProfileComponent = document.querySelector('#profile');
 
     if(Clerk.user) {
@@ -30,6 +30,7 @@ script.addEventListener('load', async function () {
 
         $('#logoff').on('click', () => {
           window.Clerk.signOut();
+          window.location = '/index.html';
         })
     } else {
       window.Clerk.mountSignUp(signUpComponent, {});
