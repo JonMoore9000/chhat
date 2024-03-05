@@ -1,0 +1,16 @@
+.cl-userButtonPopoverCard, .cl-card {
+    background-color: #222;
+    color: #fff;
+}
+
+.cl-userButtonPopoverActionButton, .cl-userButtonPopoverActionButtonText,
+.cl-userButtonPopoverActionButtonIcon, .cl-internal-wkkub3, .cl-header,
+.cl-headerSubtitle, .cl-profileSectionPrimaryButton, .cl-profileSectionTitleText,
+.cl-internal-l1ab9q, .cl-accordionTriggerButton, .cl-headerTitle, .cl-navbarButton,
+.cl-internal-3vf5mz, .cl-internal-fqx4fd {
+    color: #fff;
+}
+
+.cl-internal-1lg4ob1 {
+    background: rgba(255, 255, 255, .1);
+}
