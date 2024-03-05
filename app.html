@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="clerk.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://kit.fontawesome.com/72e484c39a.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sono:wght@200..800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tiny.cloud/1/2fda7s9zrcuamn8xk5xz03e5gbt10goe8cqzzaqbynlejmbb/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App</title>
+</head>
+<body>
+
+    <div id="main">
+        <div id="post-lightbox">
+            <div id="create-post">
+                <div class="input-box">
+                    <div class="input-rel">
+                        <i class="fa-thin fa-xmark close-post"></i>
+                        <h2 class="post-title">What's happening?</h2>
+                        <textarea id="tiny"></textarea>
+                        <button id="submit-post">Post</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="profile-wrap">
+            <div class="inner-wrapper">
+                <i class="fa-thin fa-xmark close-profile"></i>
+                <div id="profile"></div>
+            </div>
+        </div>
+        <div id="menu">
+            <div class="user-box">
+                <img id="user-img">
+                <p id="username"></p>
+            </div>
+            <button id="open-lightbox">Post</button>
+            <button id="open-profile">Profile</button>
+            <button id="logoff">Log out</button>
+        </div>
+        <div id="feed">
+            <div id="feed-wrapper"></div>
+        </div>
+        <div id="spacer"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>tinymce.init({
+            selector: 'textarea',
+            skin: window.matchMedia("(prefers-color-scheme: dark)").matches ? "oxide-dark" : "oxide", content_css: window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark" : "default",
+            plugins: 'link',
+            menubar: 'insert',
+            toolbar: 'undo redo | styles | bold italic | link',
+            toolbar_location: 'bottom',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            mergetags_list: [
+            { value: 'First.Name', title: 'First Name' },
+            { value: 'Email', title: 'Email' },
+            ],
+            ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+        });</script>
+    <script src="login.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

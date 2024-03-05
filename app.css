@@ -96,6 +96,13 @@ input {
     padding: 40px;
 }
 
+div#sign-up {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .post-title {
     font-weight: 100;
     margin-top: 0;
@@ -143,16 +150,40 @@ input {
     margin-top: 10px;
 }
 
-#open-lightbox {
+#open-lightbox, #open-profile, #logoff {
     font-size: 16px;
     background-color: #333;
     color: #fff;
     padding: 5px 15px;
     border: none;
     width: 100%;
+    margin-bottom: 10px;
 }
 
-#submit-post:hover, #delete-posts:hover, #open-lightbox:hover {
+#profile-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: calc(100% - 15%);
+}
+
+.inner-wrapper, #profile {
+    height: 100%;
+}
+
+.inner-wrapper {
+    position: relative;
+}
+
+.close-profile {
+    position: absolute;
+    top: 8px;
+    left: 40px;
+    z-index: 5;
+}
+
+#submit-post:hover, #delete-posts:hover, #open-lightbox:hover, #open-profile:hover {
     background-color: #555;
     cursor: pointer;
 }

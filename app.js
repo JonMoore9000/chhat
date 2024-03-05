@@ -22,13 +22,22 @@ const sendPost = (post) => {
 }
 
 $('#post-lightbox').hide()
+$('#profile-wrap').hide()
 
 $('#open-lightbox').on('click', () => {
     $('#post-lightbox').show()
 })
 
-$('.fa-xmark').on('click', () => {
+$('.close-post').on('click', () => {
     $('#post-lightbox').hide()
+})
+
+$('.close-profile').on('click', () => {
+    $('#profile-wrap').hide()
+})
+
+$('#open-profile').on('click', () => {
+    $('#profile-wrap').show()
 })
 
 $('#submit-post').on('click', () => {

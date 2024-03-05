@@ -16,16 +16,24 @@ script.addEventListener('load', async function () {
     
     const userButtonComponent = document.querySelector('#user-btn');
     const signUpComponent = document.querySelector('#sign-up');
+    const signInComponent = document.querySelector('#sign-up');
+    const userProfileComponent = document.querySelector('#profile');
+
     if(Clerk.user) {
         console.log('in')
         window.Clerk.mountUserButton(userButtonComponent, {});
+        window.Clerk.mountUserProfile(userProfileComponent);
 
         user = Clerk.user.username;
         $('#username').text(user)
         $('#user-img').attr('src', Clerk.user.imageUrl)
 
+        $('#logoff').on('click', () => {
+          window.Clerk.signOut();
+        })
     } else {
       window.Clerk.mountSignUp(signUpComponent, {});
+      window.Clerk.mountSignIn(signInComponent, {});
     }
     
 });
