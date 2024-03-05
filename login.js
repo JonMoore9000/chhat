@@ -25,7 +25,7 @@ script.addEventListener('load', async function () {
         $('#user-img').attr('src', Clerk.user.imageUrl)
 
     } else {
-        window.Clerk.signUpButton(signUpComponent, {});
+      window.Clerk.mountSignUp(signUpComponent, {});
     }
     
 });
