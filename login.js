@@ -15,6 +15,7 @@ script.addEventListener('load', async function () {
     await window.Clerk.load({});
     
     const userButtonComponent = document.querySelector('#user-btn');
+    const signUpComponent = document.querySelector('#sign-up');
     if(Clerk.user) {
         console.log('in')
         window.Clerk.mountUserButton(userButtonComponent, {});
@@ -24,7 +25,7 @@ script.addEventListener('load', async function () {
         $('#user-img').attr('src', Clerk.user.imageUrl)
 
     } else {
-        const signUpComponent = document.querySelector('#sign-up');
+        window.Clerk.mountUserButton(signUpComponent, {});
     }
     
 });
