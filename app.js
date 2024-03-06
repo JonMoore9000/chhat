@@ -32,6 +32,10 @@ $('#open-profile').on('click', () => {
     $('#profile-wrap').show()
 })
 
+$('#mobile-menu').on('click', () => {
+    $('#menu').toggleClass('slide-in')
+})
+
 let reply_id;
 let reply_array = []
 
@@ -76,7 +80,9 @@ $('#submit-reply').on('click', () => {
     let reply = tinymce.activeEditor.getContent({ format: 'text' });
     let id = reply_id;
     let replyObj = {
-        content: reply
+        content: reply,
+        date: currentDateTime,
+        user: user
     }
 
     const getReplies = (data) => {
@@ -133,17 +139,6 @@ const sendReply = (id) => {
     }, 1000)
 }
 
-// sort array by power
-function byDate( a, b ) {
-    if ( a.date < b.date ){
-      return -1;
-    }
-    if ( a.date > b.date ){
-      return 1;
-    }
-    return 0;
-  }
-
 const custom_sort = (a, b) => {
     return new Date(a.date).getTime() - new Date(b.date).getTime();
 }
@@ -158,8 +153,7 @@ const getPost = (callback) => {
       })
 }
 
-$('.thread').hide()
-
+// show posts
 const showPost = (data) => {
     console.log(data)
     data.reverse()
@@ -167,6 +161,19 @@ const showPost = (data) => {
     //let ordered = data.sort(custom_sort)
     //console.log(ordered)
     let posts = ''
+
+    function end() {
+        endTime = new Date();
+        var timeDiff = endTime - currentDateTime; //in ms
+        // strip the ms
+        timeDiff /= 1000;
+      
+        // get seconds 
+        var seconds = Math.round(timeDiff);
+        console.log(seconds + " seconds");
+    }
+
+     end()
     
     posts = data.map((item) => {
 
@@ -174,7 +181,14 @@ const showPost = (data) => {
 
         for (let i = 0; i < item.replies.length; i++) {
             if(item.replies[i].content) {
-                reply += '<p class="reply">' + item.replies[i].content + '</p>';
+                reply += '<div class="reply">'
+                + '<div class="reply-meta">'
+                + '<p class="reply-user">' + item.replies[i].user + '</p>'
+                + '<i class="fa-regular fa-grip-dots"></i>'
+                + '<p>' + item.replies[i].date + '</p>'
+                + '</div>'
+                +  '<p class="reply-content">' + item.replies[i].content + '</p>'
+                + '</div>';
             }
         }
         
@@ -186,13 +200,15 @@ const showPost = (data) => {
         <p class="date">${item.date}</p>
         </div>
         <p class="content">${item.content}</p>
-        <i data-num="${item._id}" class="fa-sharp fa-thin fa-message"></i>
-        <i class="fa-thin fa-angle-down"></i>
+        <p class="reply-stack"><i data-num="${item._id}" class="fa-sharp fa-thin fa-message"></i>
+        <span>${item.replies.length}</span>
+        <i class="fa-thin fa-angle-down"></i></p>
         <div class="thread">${reply}</div>
         </div>
         `
     })
     $('#feed-wrapper').html(posts)
+    $('.thread').hide()
 }
 
 $(document).on('click', '.fa-angle-down', (e) => {

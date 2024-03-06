@@ -17,8 +17,30 @@
 
 .cl-formButtonPrimary  {
     background-color: #028090;
+    border-radius: 0;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 100;
 }
 
 .cl-formButtonPrimary:hover  {
     background-color: #00a896;
+}
+
+#profile .cl-card, #profile .cl-scrollBox {
+    border-radius: 0;
+}
+
+.cl-formFieldInput {
+    background-color: #333;
+    color: #fff;
+    border-radius: 0;
+}
+
+.cl-formFieldInput:focus {
+    border: 1px solid #888
+}
+
+.cl-internal-13zhnx0 {
+    display: none;
 }

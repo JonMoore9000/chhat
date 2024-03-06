@@ -1,0 +1,33 @@
+@media(max-width:800px) {
+    #feed {
+        width: 100%;
+        padding-top: 50px;
+    }
+    #spacer {
+        display: none;
+    }
+    #menu {
+        position: absolute;
+        left: -100%;
+        top: 47px;
+        width: 100%;
+        background: #222;
+    }
+    #mobile-menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        position: fixed;
+        background: #222;
+        padding: 10px 20px;
+    }
+    #mobile-menu i {
+        font-size: 22px;
+    }
+    #mobile-menu p {
+        margin: 0;
+        font-weight: 100;
+        font-size: 18px;
+    }
+}

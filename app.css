@@ -14,6 +14,14 @@ body {
     margin: 0;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 100 !important;
+}
+
+.home-info, .cl-headerSubtitle {
+    font-weight: 100
+}
+
 .hidden {
     display: none
 }
@@ -101,7 +109,8 @@ body {
 #menu {
     width: 200px;
     border-right: 1px solid #333;
-    padding: 40px 20px 20px
+    padding: 40px 20px 20px;
+    transition: linear .25s;
 }
 
 #spacer {
@@ -210,7 +219,7 @@ input {
     cursor: pointer;
 }
 
-#submit-post {
+#submit-post, #submit-reply {
     font-size: 16px;
     background-color: #333;
     color: #fff;
@@ -252,7 +261,7 @@ input {
     z-index: 5;
 }
 
-#submit-post:hover, #delete-posts:hover, #open-lightbox:hover, #open-profile:hover, #logoff:hover {
+#submit-post:hover, #delete-posts:hover, #open-lightbox:hover, #open-profile:hover, #logoff:hover, #submit-reply:hover {
     background-color: #555;
     cursor: pointer;
 }
@@ -261,7 +270,7 @@ input {
     padding: 20px;
     border-bottom: 1px solid #333;
     width: 100%;
-    margin: 0 0 10px;
+    margin: 0;
 }
 
 .post-meta {
@@ -314,7 +323,40 @@ input {
 }
 
 .reply {
-    padding: 10px;
+    padding: 20px;
     background: #252525;
     margin: 10px 0;
+}
+
+.reply-meta {
+    display: flex;
+    font-size: 12px;
+    color: #888;
+}
+
+.reply-content {
+    padding-top: 10px;
+}
+
+.reply p {
+    margin: 0;
+}
+
+.reply-stack {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.reply-stack span {
+    padding: 0 10px 0 5px;
+    color: #888;
+}
+
+#mobile-menu {
+    display: none;
+}
+
+.slide-in {
+    left: 0 !important;
 }
