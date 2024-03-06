@@ -47,4 +47,10 @@
         top: -35px;
         left: -15px;
     }
+    .home-content {
+        padding: 20px 0;
+    }
+    .home-content img {
+        width: 100px;
+    }
 }
