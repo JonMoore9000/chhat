@@ -14,6 +14,7 @@ $('.signup-footer').hide()
 
 $('#open-lightbox').on('click', () => {
     $('#post-lightbox').show()
+    $('#menu').removeClass('slide-in')
 })
 
 $('.close-post').on('click', () => {

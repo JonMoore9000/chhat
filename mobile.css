@@ -37,4 +37,14 @@
     .user-box {
         margin: auto;
     }
+    #create-post, #create-reply {
+        width: calc(100% - 40px);
+    }
+    .input-box {
+        padding: 15px
+    }
+    .fa-xmark {
+        top: -35px;
+        left: -15px;
+    }
 }
