@@ -25,9 +25,13 @@
     #mobile-menu i {
         font-size: 22px;
     }
-    #mobile-menu p {
-        margin: 0;
-        font-weight: 100;
-        font-size: 18px;
+    #mobile-menu img {
+        width: 44px
+    }
+    .menu-img {
+        display: none
+    }
+    .user-box {
+        margin: auto;
     }
 }

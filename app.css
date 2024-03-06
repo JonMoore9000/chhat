@@ -43,6 +43,10 @@ h1, h2, h3, h4, h5, h6 {
     height: 100%;
 }
 
+.home-content img {
+    width: 200px;
+}
+
 .container {
     max-width: 400px;
     margin: auto;
@@ -111,6 +115,13 @@ h1, h2, h3, h4, h5, h6 {
     border-right: 1px solid #333;
     padding: 40px 20px 20px;
     transition: linear .25s;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#menu img {
+    width: 150px;
+    align-self: flex-end;
 }
 
 #spacer {
