@@ -241,10 +241,10 @@ input {
 
 #open-lightbox, #open-profile, #logoff {
     font-size: 16px;
-    background-color: #333;
-    color: #fff;
-    padding: 5px 15px;
-    border: none;
+    background-color: transparent;
+    color: #888;
+    padding: 10px 15px;
+    border: 1px solid #333;
     width: 100%;
     margin-bottom: 10px;
 }
@@ -272,7 +272,13 @@ input {
     z-index: 5;
 }
 
-#submit-post:hover, #delete-posts:hover, #open-lightbox:hover, #open-profile:hover, #logoff:hover, #submit-reply:hover {
+#open-lightbox:hover, #open-profile:hover, #logoff:hover {
+    border: 1px solid #aaa;
+    color: #fff;
+    cursor: pointer;
+}
+
+#submit-post:hover, #delete-posts:hover, #submit-reply:hover {
     background-color: #555;
     cursor: pointer;
 }
