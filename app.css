@@ -7,6 +7,11 @@ html, body {
     font-family: "Sono", monospace;
 }
 
+:root {
+    --primary: #028090;
+    --secondary: #00a896;
+}
+
 body {
     background: #121212;
     color: #fff;
@@ -23,6 +28,30 @@ h1, h2, h3, h4, h5, h6 {
 
 .hidden {
     display: none
+}
+
+#loader {
+    position: absolute;
+    background: #121212;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.loader-inner {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+#loader img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
 }
 
 #main {
@@ -44,6 +73,23 @@ h1, h2, h3, h4, h5, h6 {
 
 .home-content img {
     width: 200px;
+}
+
+.clerk-logins, #enter {
+    display: block;
+    padding: 10px 25px;
+    border: 1px solid #888;
+    max-width: 300px;
+    width: 100%;
+    margin: 0 auto 10px;
+    transition: linear .15s;
+    color: #fff;
+    text-decoration: none;
+}
+
+.clerk-logins:hover, #enter:hover {
+    cursor: pointer;
+    background: rgba(255,255,255,.1);
 }
 
 .container {
@@ -110,7 +156,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #menu {
-    width: 200px;
+    width: 225px;
     border-right: 1px solid #333;
     padding: 40px 20px 20px;
     transition: linear .25s;
@@ -124,11 +170,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #spacer {
-    width: 200px;
+    width: 225px;
 }
 
 #feed {
-    width: 700px;
+    width: 650px;
     padding: 20px 0 0;
     border-right: 1px solid #333;
     overflow: auto;
@@ -136,7 +182,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* width */
 #feed::-webkit-scrollbar {
-    width: 10px;
+    width: 6px;
   }
   
   /* Track */
@@ -375,4 +421,41 @@ input {
 
 .slide-in {
     left: 0 !important;
+}
+
+.post-body img {
+    margin-top: 20px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    width: 100%;
+    height: auto;
+}
+
+/*-----------------------
+SWAL 
+-----------------------*/
+.swal2-popup {
+    background: #121212;
+    color: #fff
+}
+.swal2-container {
+    background: rgba(0, 0, 0, .8);
+    backdrop-filter: blur(3px);
+}
+.swal2-confirm {
+    background: var(--primary);
+    color: #fff;
+    font-size: 20px;
+    padding: 5px 25px;
+    border: none
+}
+.swal2-title {
+    font-size: 22px;
+}
+.swal2-confirm:hover {
+    cursor: pointer;
+    background: var(--secondary);
+}
+.swal2-error {
+    font-size: 10px;
 }

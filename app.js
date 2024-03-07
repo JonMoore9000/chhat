@@ -6,6 +6,12 @@ const now = new Date();
 let currentDateTime = now.toLocaleString();
 console.log(now)
 
+//remove loader
+setTimeout(() => {
+    $('#loader').fadeOut(500);
+    $('body').css('overflow', 'auto')
+}, 2000)
+
 $('#post-lightbox').hide()
 $('#reply-lightbox').hide()
 $('#profile-wrap').hide()
@@ -51,7 +57,11 @@ $('#submit-post').on('click', () => {
     let post = tinymce.activeEditor.getContent({ format: 'html' });
 
     if(post == '') {
-        alert('no post')
+        Swal.fire({
+            icon: "error",
+            title: "Looks like you forgot to type something",
+            buttonsStyling: false
+        });
     } else {
         sendPost(post)
         console.log(user)
@@ -115,7 +125,11 @@ $('#submit-reply').on('click', () => {
     
     console.log(replyObj)
     if(reply == '') {
-        alert('no reply')
+        Swal.fire({
+            icon: "error",
+            title: "Looks like you forgot to type something",
+            buttonsStyling: false
+        });
     } else {
         sendReply(id)
         $('#submit-reply').text('Processing...')

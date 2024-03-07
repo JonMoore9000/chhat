@@ -12,9 +12,12 @@
     #menu {
         position: absolute;
         left: -100%;
-        top: 47px;
+        top: 42px;
+        border-right: none;
+        border-top: 1px solid #888;
         width: 100%;
         background: #222;
+        height: calc(100% - 42px);
     }
     #mobile-menu {
         display: flex;
@@ -26,10 +29,10 @@
         padding: 10px 20px;
     }
     #mobile-menu i {
-        font-size: 22px;
+        font-size: 24px;
     }
     #mobile-menu img {
-        width: 44px
+        width: 48px
     }
     .menu-img {
         display: none

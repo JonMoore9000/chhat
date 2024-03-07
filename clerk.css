@@ -1,5 +1,5 @@
 .cl-userButtonPopoverCard, .cl-card {
-    background-color: #222;
+    background-color: #151515;
     color: #fff;
 }
 
@@ -7,7 +7,7 @@
 .cl-userButtonPopoverActionButtonIcon, .cl-internal-wkkub3, .cl-header,
 .cl-headerSubtitle, .cl-profileSectionPrimaryButton, .cl-profileSectionTitleText,
 .cl-internal-l1ab9q, .cl-accordionTriggerButton, .cl-headerTitle, .cl-navbarButton,
-.cl-internal-3vf5mz, .cl-internal-fqx4fd, .cl-formFieldAction {
+.cl-internal-3vf5mz, .cl-internal-fqx4fd, .cl-formFieldAction, .cl-formFieldLabel, .cl-identityPreviewText, .cl-modalCloseButton, .cl-formFieldInfoText, #error-password, .cl-formFieldSuccessText, .cl-formHeaderTitle, .cl-formHeaderSubtitle, .cl-formResendCodeLink {
     color: #fff;
 }
 
@@ -18,7 +18,7 @@
 .cl-formButtonPrimary  {
     background-color: #028090;
     border-radius: 0;
-    margin-top: 20px;
+    margin-top: 0;
     font-size: 14px;
     font-weight: 100;
 }
@@ -27,7 +27,7 @@
     background-color: #00a896;
 }
 
-#profile .cl-card, #profile .cl-scrollBox {
+#profile .cl-card, #profile .cl-scrollBox, .cl-card {
     border-radius: 0;
 }
 
@@ -41,6 +41,19 @@
     border: 1px solid #888
 }
 
-.cl-internal-13zhnx0 {
+.cl-internal-13zhnx0, .cl-internal-b3fm6y {
     display: none;
+}
+
+.cl-signIn-start, .cl-signIn-password, .cl-signUp-start {
+    padding-bottom: 10px;
+}
+
+.cl-otpCodeFieldInput {
+    border-bottom: 2px solid #aaa;
+    color: #aaa
+}
+
+.cl-otpCodeFieldInput:focus {
+    border-bottom: 2px solid #fff;
 }
