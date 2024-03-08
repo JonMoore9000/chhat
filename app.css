@@ -188,12 +188,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #notes {
-    position: absolute;
+    position: fixed;
     left: -100%;
     top: 0;
     background: #222;
-    transition: linear .15s;
+    transition: linear .25s;
     width: 100%;
+    max-width: 600px;
+    height: 100%;
     font-weight: 300;
     line-height: 1.5;
 }
@@ -325,7 +327,8 @@ input {
 }
 
 #open-lightbox, #open-profile, #logoff, #notes-btn,
-#mbl-open-lightbox, #mbl-open-profile, #mbl-logoff, #mbl-notes-btn {
+#mbl-open-lightbox, #mbl-open-profile, #mbl-logoff, #mbl-notes-btn,
+#mobile-post {
     font-size: 16px;
     background-color: transparent;
     color: #aaa;
@@ -512,6 +515,10 @@ input {
     border-radius: 5px;
 }
 
+#main .tox .tox-toolbar__group {
+    padding: 0 5px
+}
+
 /*-----------------------
 SWAL 
 -----------------------*/
@@ -539,7 +546,4 @@ SWAL
 }
 .swal2-error {
     font-size: 10px;
-}
-#mobile-post {
-    display: none;
 }

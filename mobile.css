@@ -43,14 +43,16 @@
         margin: auto;
     }
     #create-post, #create-reply {
-        width: calc(100% - 40px);
+        width: calc(100% - 20px);
     }
     .input-box {
-        padding: 15px
+        padding: 15px;
+        border: 1px solid #555
     }
     .fa-xmark {
-        top: -35px;
-        left: -15px;
+        top: -45px;
+    left: -15px;
+    font-size: 30px;
     }
     .home-content {
         padding: 20px 0;
@@ -81,20 +83,6 @@
     .reply-user {
         width: 100%;
     }
-    #mobile-post {
-        display: block;
-        position: fixed;
-        width: 50px;
-        height: 50px;
-        background: #333;
-        color: #fff;
-        bottom: 15px;
-        right: 20px;
-        border: none;
-        border-radius: 4px;
-        font-size: 18px;
-        z-index: 5;
-    }
     #open-lightbox, #open-profile, #logoff, #notes-btn {
         width: 250px;
     }
@@ -110,23 +98,23 @@
     #mobile-nav {
         display: flex;
         position: fixed;
-        bottom: 15px;
         background: #333;
         color: #fff;
-        bottom: 15px;
-        left: 20px;
+        bottom: 0;
+        left: 0;
         border: none;
         height: 50px;
         z-index: 10;
-        width: calc(100% - 100px);
-        border-radius: 4px;
+        width: 100%;
+        border-radius: 0;
     }
     #mobile-nav button {
         text-align: center;
         border: none;
-        margin: auto;
+        margin: 0;
         font-size: 18px;
         color: #fff;
+        border-radius: 0;
     }
     .close-profile {
         top: 10px;
@@ -137,5 +125,9 @@
     }
     #notes ul {
         padding-left: 15px;
+    }
+    #notes .fa-xmark {
+        top: 10px;
+        left: 10px
     }
 }
