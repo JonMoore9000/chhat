@@ -102,6 +102,8 @@ $('#submit-post').on('click', () => {
         $('#submit-post').text('Processing...')
         setTimeout(() => {
             $('#post-lightbox').hide()
+            $('#submit-post').text('Post')
+            tinyMCE.activeEditor.setContent('');
         }, 2500)
     }
 })
@@ -170,6 +172,8 @@ $('#submit-reply').on('click', () => {
         $('#submit-reply').text('Processing...')
         setTimeout(() => {
             $('#reply-lightbox').hide()
+            $('#submit-reply').text('Reply')
+            tinyMCE.activeEditor.setContent('');
         }, 2500)
     }
 })
