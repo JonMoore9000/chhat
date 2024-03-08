@@ -328,7 +328,7 @@ input {
 
 #open-lightbox, #open-profile, #logoff, #notes-btn,
 #mbl-open-lightbox, #mbl-open-profile, #mbl-logoff, #mbl-notes-btn,
-#mobile-post {
+#mobile-post, #myposts-btn, #mbl-myposts {
     font-size: 16px;
     background-color: transparent;
     color: #aaa;
@@ -364,7 +364,8 @@ input {
     z-index: 5;
 }
 
-#open-lightbox:hover, #open-profile:hover, #logoff:hover, #notes-btn:hover {
+#open-lightbox:hover, #open-profile:hover, #logoff:hover, #notes-btn:hover,
+#myposts-btn:hover {
     border: 1px solid #aaa;
     color: #fff;
     cursor: pointer;
@@ -545,6 +546,31 @@ div#feed-wrapper {
 .feed-top i:hover {
     cursor: pointer;
     transform: rotate(45deg);
+}
+
+.learn-more {
+    color: #888;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.learn-more:hover {
+    color: #fff;
+}
+
+.learn-pop {
+    width: 600px;
+}
+
+.learn-text {
+    font-size: 15px !important;
+    line-height: 1.4 !important;
+    color: #ccc !important;
+    padding: 0 5px !important;
 }
 
 /*-----------------------

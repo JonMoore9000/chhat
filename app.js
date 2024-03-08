@@ -45,6 +45,22 @@ $('.feed-top i').on('click', () => {
     getPost(showPost)
 })
 
+$('#myposts-btn').on('click', () => {
+    getPost(showMyPost)
+})
+$('.learn-more').on('click', () => {
+    Swal.fire({
+        //icon: "error",
+        title: "What is nmbl?",
+        text: "At nmbl, we believe in keeping things simple and stress-free. Our platform is designed to provide a seamless and enjoyable social experience for everyone. Say goodbye to cluttered feeds and complicated interfaces - with nmbl, simplicity is key. Whether you're connecting with friends, sharing moments, or discovering new interests, our user-friendly approach ensures that navigating our platform is always a breeze. Join us in embracing the joy of simplicity, and let Nmbl be your go-to destination for hassle-free social networking.",
+        buttonsStyling: false,
+        customClass: {
+            popup: 'learn-pop',
+            htmlContainer: 'learn-text'
+        }
+    });
+})
+
 /*---------------------
 MOBILE BTNS
 ---------------------*/
@@ -56,6 +72,9 @@ $('#mbl-open-lightbox, #mobile-post').on('click', () => {
 })
 $('#mbl-open-profile').on('click', () => {
     $('#profile-wrap').show()
+})
+$('#mbl-myposts').on('click', () => {
+    getPost(showMyPost)
 })
 
 let reply_id;
@@ -251,6 +270,68 @@ const showPost = (data) => {
 $(document).on('click', '.fa-angle-down', (e) => {
     $(e.currentTarget).closest('.post-body').find('.thread').slideToggle()
 })
+
+const showMyPost = (data) => {
+    //scribbles = 0
+    data.reverse()
+    //$('.thread').hide()
+
+    let posts = ''
+
+    
+    
+        posts = data.map((item) => {
+            if(user == item.user) {
+
+            let reply = ''
+
+            for (let i = 0; i < item.replies.length; i++) {
+                if(item.replies[i].content) {
+                    reply += '<div class="reply">'
+                    + '<div class="reply-meta">'
+                    + '<p class="reply-user">' + item.replies[i].user + '</p>'
+                    + '<i class="fa-solid fa-circle"></i>'
+                    + '<p>' + item.replies[i].date + '</p>'
+                    + '</div>'
+                    +  '<p class="reply-content">' + item.replies[i].content + '</p>'
+                    + '</div>';
+                }
+            }
+            
+
+            return `<div class="post-body">
+
+            <div class="post-left">
+            <img src="${item.avatar}">
+            </div>
+
+            <div class="post-right">
+            <div class="post-meta">
+            <p class="username">${item.user}</p> 
+            <i class="fa-solid fa-circle"></i>
+            <p class="date">${item.date}</p>
+            </div>
+            <div class="content">${item.content}</div>
+            <div class="reply-stack">
+            <i data-num="${item._id}" class="fa-sharp fa-thin fa-message"></i>
+            <span>${item.replies.length}</span>
+            <i class="fa-thin fa-angle-down"></i>
+            </div>
+            <div class="thread">${reply}</div>
+            </div>
+
+            
+            </div>
+            `
+        }
+    })
+    $('#feed-wrapper').html(posts)
+    $('.thread').hide()
+}
+
+/*$(document).on('click', '.fa-angle-down', (e) => {
+    $(e.currentTarget).closest('.post-body').find('.thread').slideToggle()
+})*/
 
 //getPost(showReplies)
 getPost(showPost)
