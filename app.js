@@ -1,5 +1,6 @@
 let user;
 let avatar;
+let scribbles = 0;
 const now = new Date();
 let currentDateTime = now.toLocaleString([], {day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute:'2-digit'});
 console.log(now)
@@ -8,7 +9,7 @@ console.log(now)
 setTimeout(() => {
     $('#loader').fadeOut(500);
     $('body').css('overflow', 'auto')
-}, 2000)
+}, 2500)
 
 $('#post-lightbox').hide()
 $('#reply-lightbox').hide()
@@ -37,10 +38,6 @@ $('#open-profile').on('click', () => {
     $('#profile-wrap').show()
 })
 
-$('#mobile-menu').on('click', () => {
-    $('#menu').toggleClass('slide-in')
-})
-
 $('#notes-btn, #notes .fa-xmark').on('click', () => {
     $('#notes').toggleClass('notes-slide')
 })
@@ -50,15 +47,12 @@ MOBILE BTNS
 ---------------------*/
 $('#mbl-notes-btn').on('click', () => {
     $('#notes').toggleClass('notes-slide')
-    $('#menu').toggleClass('slide-in')
 })
 $('#mbl-open-lightbox, #mobile-post').on('click', () => {
-    $('#menu').removeClass('slide-in')
     $('#post-lightbox').show()
 })
 $('#mbl-open-profile').on('click', () => {
     $('#profile-wrap').show()
-    $('#menu').removeClass('slide-in')
 })
 
 let reply_id;
@@ -195,26 +189,17 @@ const showPost = (data) => {
     //let ordered = data.sort(custom_sort)
     //console.log(ordered)
     let posts = ''
-
-    function end() {
-        endTime = new Date();
-        var timeDiff = endTime - currentDateTime; //in ms
-        // strip the ms
-        timeDiff /= 1000;
-      
-        // get seconds 
-        var seconds = Math.round(timeDiff);
-        console.log(seconds + " seconds");
-    }
-
-     end()
     
     posts = data.map((item) => {
 
         let reply = ''
-
-        let time = currentDateTime - item.date
-        console.log(`seconds elapsed = ${Math.floor(time / 1000)}`)
+        console.log(item.user)
+        setTimeout(() => {
+            if(user == item.user) {
+                scribbles++
+                console.log(scribbles)
+            }
+        }, 1000)
 
         for (let i = 0; i < item.replies.length; i++) {
             if(item.replies[i].content) {
@@ -257,6 +242,9 @@ const showPost = (data) => {
     })
     $('#feed-wrapper').html(posts)
     $('.thread').hide()
+    setTimeout(() => {
+        $('.scribbles').text(scribbles)
+    }, 1100)
 }
 
 $(document).on('click', '.fa-angle-down', (e) => {

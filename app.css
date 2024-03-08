@@ -170,7 +170,7 @@ h1, h2, h3, h4, h5, h6 {
     align-self: flex-end;
 }
 
-.mobile-nav-btns {
+#mobile-nav {
     display: none;
 }
 
@@ -361,8 +361,7 @@ input {
     z-index: 5;
 }
 
-#open-lightbox:hover, #open-profile:hover, #logoff:hover, #notes-btn:hover,
-#mbl-open-lightbox:hover, #mbl-open-profile:hover, #mbl-logoff:hover, #mbl-notes-btn:hover  {
+#open-lightbox:hover, #open-profile:hover, #logoff:hover, #notes-btn:hover {
     border: 1px solid #aaa;
     color: #fff;
     cursor: pointer;

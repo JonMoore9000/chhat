@@ -102,11 +102,40 @@
         font-size: 14px;
         top: 48px;
         border-top: 1px solid #555;
+        position: fixed
     }
-    .nav-btns {
+    .mobile-nav {
         display: none;
     }
-    .mobile-nav-btns {
-        display: block;
+    #mobile-nav {
+        display: flex;
+        position: fixed;
+        bottom: 15px;
+        background: #333;
+        color: #fff;
+        bottom: 15px;
+        left: 20px;
+        border: none;
+        height: 50px;
+        z-index: 10;
+        width: calc(100% - 100px);
+        border-radius: 4px;
+    }
+    #mobile-nav button {
+        text-align: center;
+        border: none;
+        margin: auto;
+        font-size: 18px;
+        color: #fff;
+    }
+    .close-profile {
+        top: 10px;
+        left: 10px;
+    }
+    #notes h2 {
+        padding-left: 0;
+    }
+    #notes ul {
+        padding-left: 15px;
     }
 }

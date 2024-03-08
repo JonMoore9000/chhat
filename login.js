@@ -24,11 +24,11 @@ script.addEventListener('load', async function () {
 
         console.log(Clerk.user)
         window.Clerk.mountUserProfile(userProfileComponent);
-
         $('#enter').show()
         $('.clerk-sign-in').hide()
         $('.clerk-sign-up').hide()
         user = Clerk.user.username
+        console.log(`welcome back ${user}`)
         avatar = Clerk.user.imageUrl
         $('#username').text(user)
         $('#user-img').attr('src', Clerk.user.imageUrl)
