@@ -3,7 +3,6 @@ let avatar;
 let scribbles = 0;
 const now = new Date();
 let currentDateTime = now.toLocaleString([], {day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute:'2-digit'});
-console.log(now)
 
 //remove loader
 setTimeout(() => {
@@ -183,7 +182,6 @@ const getPost = (callback) => {
 
 // show posts
 const showPost = (data) => {
-    console.log(data)
     data.reverse()
     $('.thread').hide()
     //let ordered = data.sort(custom_sort)
@@ -193,11 +191,9 @@ const showPost = (data) => {
     posts = data.map((item) => {
 
         let reply = ''
-        console.log(item.user)
         setTimeout(() => {
             if(user == item.user) {
                 scribbles++
-                console.log(scribbles)
             }
         }, 1000)
 
@@ -248,7 +244,6 @@ const showPost = (data) => {
 }
 
 $(document).on('click', '.fa-angle-down', (e) => {
-    console.log('test')
     $(e.currentTarget).closest('.post-body').find('.thread').slideToggle()
 })
 

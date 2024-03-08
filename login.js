@@ -22,7 +22,6 @@ script.addEventListener('load', async function () {
 
     if(Clerk.user) {
 
-        console.log(Clerk.user)
         window.Clerk.mountUserProfile(userProfileComponent);
         $('#enter').show()
         $('.clerk-sign-in').hide()
