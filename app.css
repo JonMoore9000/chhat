@@ -518,6 +518,34 @@ input {
 #main .tox .tox-toolbar__group {
     padding: 0 5px
 }
+.feed-top {
+    position: fixed;
+    left: 50%;
+    top: 0;
+    width: 100%;
+    max-width: 650px;
+    background: rgba(0, 0, 0, .85);
+    backdrop-filter: blur(3px);
+    padding: 20px;
+    display: flex;
+    font-weight: 300;
+    transform: translateX(-50%);
+}
+.feed-top p {
+    margin: 0
+}
+div#feed-wrapper {
+    margin-top: 50px;
+}
+.feed-top i {
+    font-size: 18px;
+    margin-left: 10px;
+    transition: linear .1s;
+}
+.feed-top i:hover {
+    cursor: pointer;
+    transform: rotate(45deg);
+}
 
 /*-----------------------
 SWAL 

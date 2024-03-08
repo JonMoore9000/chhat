@@ -41,6 +41,10 @@ $('#notes-btn, #notes .fa-xmark').on('click', () => {
     $('#notes').toggleClass('notes-slide')
 })
 
+$('.feed-top i').on('click', () => {
+    getPost(showPost)
+})
+
 /*---------------------
 MOBILE BTNS
 ---------------------*/
@@ -78,7 +82,7 @@ $('#submit-post').on('click', () => {
         console.log(user)
         $('#submit-post').text('Processing...')
         setTimeout(() => {
-            location.reload()
+            $('#post-lightbox').hide()
         }, 2500)
     }
 })
@@ -146,7 +150,7 @@ $('#submit-reply').on('click', () => {
         sendReply(id)
         $('#submit-reply').text('Processing...')
         setTimeout(() => {
-            location.reload()
+            $('#reply-lightbox').hide()
         }, 2500)
     }
 })
@@ -182,6 +186,7 @@ const getPost = (callback) => {
 
 // show posts
 const showPost = (data) => {
+    scribbles = 0
     data.reverse()
     $('.thread').hide()
     //let ordered = data.sort(custom_sort)
