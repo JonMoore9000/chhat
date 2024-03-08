@@ -162,11 +162,16 @@ h1, h2, h3, h4, h5, h6 {
     transition: linear .25s;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 #menu img {
-    width: 150px;
+    width: 125px;
     align-self: flex-end;
+}
+
+.mobile-nav-btns {
+    display: none;
 }
 
 #spacer {
@@ -177,7 +182,39 @@ h1, h2, h3, h4, h5, h6 {
     width: 650px;
     padding: 20px 0 0;
     border-right: 1px solid #333;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+}
+
+#notes {
+    position: absolute;
+    left: -100%;
+    top: 0;
+    background: #222;
+    transition: linear .15s;
+    width: 100%;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+#notes h2 {
+    padding-left: 20px;
+}
+
+.notes-inner {
+    position: relative;
+    padding: 30px;
+}
+
+#notes .fa-xmark {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+#feed .notes-slide {
+    left: 0
 }
 
 /* width */
@@ -192,7 +229,7 @@ h1, h2, h3, h4, h5, h6 {
   
   /* Handle */
   #feed::-webkit-scrollbar-thumb {
-    background: #555;
+    background: #777;
   }
   
   /* Handle on hover */
@@ -208,6 +245,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 100%;
     background: rgba(0,0,0,.3);
     backdrop-filter: blur(4px);
+    z-index: 20;
 }
 
 input {
@@ -233,8 +271,9 @@ input {
     transform: translate(-50%, -50%);
     max-width: 700px;
     width: 100%;
-    background: #181818;
+    background: #111;
     padding: 40px;
+    border-radius: 5px;
 }
 
 .post-title {
@@ -276,30 +315,35 @@ input {
 }
 
 #submit-post, #submit-reply {
-    font-size: 16px;
+    font-size: 18px;
     background-color: #333;
     color: #fff;
-    padding: 5px 15px;
+    padding: 10px 30px;
     border: none;
     margin-top: 10px;
+    border-radius: 4px;
 }
 
-#open-lightbox, #open-profile, #logoff {
+#open-lightbox, #open-profile, #logoff, #notes-btn,
+#mbl-open-lightbox, #mbl-open-profile, #mbl-logoff, #mbl-notes-btn {
     font-size: 16px;
     background-color: transparent;
-    color: #888;
+    color: #aaa;
     padding: 10px 15px;
-    border: 1px solid #333;
+    border: 1px solid #888;
     width: 100%;
     margin-bottom: 10px;
+    border-radius: 4px;
+    text-align: left;
 }
 
 #profile-wrap {
     position: absolute;
-    top: 50%;
+    top: 52%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: calc(100% - 15%);
+    height: calc(100% - 13%);
+    z-index: 10;
 }
 
 .inner-wrapper, #profile {
@@ -317,7 +361,8 @@ input {
     z-index: 5;
 }
 
-#open-lightbox:hover, #open-profile:hover, #logoff:hover {
+#open-lightbox:hover, #open-profile:hover, #logoff:hover, #notes-btn:hover,
+#mbl-open-lightbox:hover, #mbl-open-profile:hover, #mbl-logoff:hover, #mbl-notes-btn:hover  {
     border: 1px solid #aaa;
     color: #fff;
     cursor: pointer;
@@ -333,6 +378,29 @@ input {
     border-bottom: 1px solid #333;
     width: 100%;
     margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.post-left {
+    width: 50px;
+}
+
+.fa-circle {
+    font-size: 3px;
+    color: #a8a8a8;
+    margin: 0 5px;
+    padding-top: 7px;
+}
+
+#feed .post-left img {
+    margin-top: 0;
+    border-radius: 4px;
+}
+
+.post-right {
+    width: calc(100% - 60px);
 }
 
 .post-meta {
@@ -340,7 +408,7 @@ input {
 }
 
 .content {
-    margin: 0 0 10px;
+    margin: -7px 0 0;
     display: block;
 }
 
@@ -349,12 +417,12 @@ input {
 }
 
 .fa-grip-dots {
-    color: #888;
+    color: #a8a8a8;
     margin: 0 10px;
 }
 
 .fa-message, .fa-angle-down {
-    color: #888;
+    color: #a8a8a8;
 }
 
 .fa-message:hover, .fa-angle-down:hover {
@@ -363,15 +431,15 @@ input {
 }
 
 .date {
-    color: #888;
+    color: #a8a8a8;
     font-size: 14px;
     margin: 0;
 }
 
 .username {
-    color: #888;
+    color: #a8a8a8;
     font-size: 14px;
-    margin: 0 0 10px;
+    margin: 0;
 }
 
 .user-box {
@@ -380,20 +448,25 @@ input {
 
 #user-img{
     width: 100px;
-    padding: 5px;
-    border: 1px solid #aaa
+    border-radius: 5px;
+}
+
+.content p {
+    font-weight: 300;
+    line-height: 1.3;
 }
 
 .reply {
     padding: 20px;
     background: #252525;
     margin: 10px 0;
+    border-radius: 4px;
 }
 
 .reply-meta {
     display: flex;
-    font-size: 12px;
-    color: #888;
+    font-size: 13px;
+    color: #a8a8a8;
 }
 
 .reply-content {
@@ -408,11 +481,17 @@ input {
     display: flex;
     align-items: center;
     margin-bottom: 0;
+    width: 100%;
+    padding-left: 5px;
 }
 
 .reply-stack span {
     padding: 0 10px 0 5px;
-    color: #888;
+    color: #a8a8a8;
+}
+
+.thread {
+    width: 100%
 }
 
 #mobile-menu {
@@ -425,10 +504,13 @@ input {
 
 .post-body img {
     margin-top: 20px;
-    border-radius: 10px;
-    border: 1px solid #333;
+    border-radius: 5px;
     width: 100%;
     height: auto;
+}
+
+.tox .tox-editor-container {
+    border-radius: 5px;
 }
 
 /*-----------------------
@@ -458,4 +540,7 @@ SWAL
 }
 .swal2-error {
     font-size: 10px;
+}
+#mobile-post {
+    display: none;
 }

@@ -1,9 +1,7 @@
 let user;
-// create a new `Date` object
+let avatar;
 const now = new Date();
-
-// get the current date and time as a string
-let currentDateTime = now.toLocaleString();
+let currentDateTime = now.toLocaleString([], {day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute:'2-digit'});
 console.log(now)
 
 //remove loader
@@ -18,7 +16,7 @@ $('#profile-wrap').hide()
 $('#sign-in').hide()
 $('.signup-footer').hide()
 
-$('#open-lightbox').on('click', () => {
+$('#open-lightbox, #mobile-post').on('click', () => {
     $('#post-lightbox').show()
     $('#menu').removeClass('slide-in')
 })
@@ -41,6 +39,26 @@ $('#open-profile').on('click', () => {
 
 $('#mobile-menu').on('click', () => {
     $('#menu').toggleClass('slide-in')
+})
+
+$('#notes-btn, #notes .fa-xmark').on('click', () => {
+    $('#notes').toggleClass('notes-slide')
+})
+
+/*---------------------
+MOBILE BTNS
+---------------------*/
+$('#mbl-notes-btn').on('click', () => {
+    $('#notes').toggleClass('notes-slide')
+    $('#menu').toggleClass('slide-in')
+})
+$('#mbl-open-lightbox, #mobile-post').on('click', () => {
+    $('#menu').removeClass('slide-in')
+    $('#post-lightbox').show()
+})
+$('#mbl-open-profile').on('click', () => {
+    $('#profile-wrap').show()
+    $('#menu').removeClass('slide-in')
 })
 
 let reply_id;
@@ -81,6 +99,7 @@ const sendPost = (post) => {
             content: post,
             date: currentDateTime,
             user: user,
+            avatar: avatar
         }),
         contentType: "application/json",
         complete: () => console.log("post sent to db")
@@ -194,12 +213,15 @@ const showPost = (data) => {
 
         let reply = ''
 
+        let time = currentDateTime - item.date
+        console.log(`seconds elapsed = ${Math.floor(time / 1000)}`)
+
         for (let i = 0; i < item.replies.length; i++) {
             if(item.replies[i].content) {
                 reply += '<div class="reply">'
                 + '<div class="reply-meta">'
                 + '<p class="reply-user">' + item.replies[i].user + '</p>'
-                + '<i class="fa-regular fa-grip-dots"></i>'
+                + '<i class="fa-solid fa-circle"></i>'
                 + '<p>' + item.replies[i].date + '</p>'
                 + '</div>'
                 +  '<p class="reply-content">' + item.replies[i].content + '</p>'
@@ -209,16 +231,27 @@ const showPost = (data) => {
         
 
         return `<div class="post-body">
+
+        <div class="post-left">
+        <img src="${item.avatar}">
+        </div>
+
+        <div class="post-right">
         <div class="post-meta">
         <p class="username">${item.user}</p> 
-        <i class="fa-regular fa-grip-dots"></i>
+        <i class="fa-solid fa-circle"></i>
         <p class="date">${item.date}</p>
         </div>
-        <p class="content">${item.content}</p>
-        <p class="reply-stack"><i data-num="${item._id}" class="fa-sharp fa-thin fa-message"></i>
+        <div class="content">${item.content}</div>
+        <div class="reply-stack">
+        <i data-num="${item._id}" class="fa-sharp fa-thin fa-message"></i>
         <span>${item.replies.length}</span>
-        <i class="fa-thin fa-angle-down"></i></p>
+        <i class="fa-thin fa-angle-down"></i>
+        </div>
         <div class="thread">${reply}</div>
+        </div>
+
+        
         </div>
         `
     })

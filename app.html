@@ -10,12 +10,14 @@
     <script src="https://kit.fontawesome.com/72e484c39a.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Sono:wght@200..800&display=swap" rel="stylesheet">
     <script src="https://cdn.tiny.cloud/1/2fda7s9zrcuamn8xk5xz03e5gbt10goe8cqzzaqbynlejmbb/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script defer src="https://us.umami.is/script.js" data-website-id="8ab33884-6956-4292-a34c-7d2dc576e92a"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>nmbl | dashboard</title>
     <link rel="icon" type="image/x-icon" href="assets/favi.png">
 </head>
 <body>
+    <button id="mobile-post"><i class="fa-sharp fa-light fa-feather"></i></button>
     <div id="loader">
         <div class="loader-inner">
             <img src="assets/lloader.svg" alt="">
@@ -60,14 +62,36 @@
             <div class="user-box">
                 <img id="user-img">
                 <p id="username"></p>
-                <button id="open-lightbox">Post</button>
-                <button id="open-profile">Account</button>
-                <button id="logoff">Log out</button>
+                <div class="nav-btns">
+                    <button id="open-lightbox"><i class="fa-sharp fa-light fa-feather"></i> Scribble</button>
+                    <button id="open-profile"><i class="fa-light fa-user"></i> Account</button>
+                    <button id="logoff"><i class="fa-light fa-right-from-bracket"></i> Log out</button>
+                    <button id="notes-btn"><i class="fa-light fa-sparkles"></i> What's New</button>
+                </div>
+                <div class="mobile-nav-btns">
+                    <button id="mbl-open-lightbox"><i class="fa-sharp fa-light fa-feather"></i> Scribble</button>
+                    <button id="mbl-open-profile"><i class="fa-light fa-user"></i> Account</button>
+                    <button id="mbl-logoff"><i class="fa-light fa-right-from-bracket"></i> Log out</button>
+                    <button id="mbl-notes-btn"><i class="fa-light fa-sparkles"></i> What's New</button>
+                </div>
             </div>
             
             <img class="menu-img" src="assets/log-n.svg">
         </div>
         <div id="feed">
+            <div id="notes">
+                <div class="notes-inner">
+                    <i class="fa-light fa-xmark"></i>
+                    <h2>What's new?</h2>
+                    <ul>
+                        <li>Included user avatar in scribble</li>
+                        <li>Updated date and time format</li>
+                        <li>Added floating scribble button on mobile</li>
+                        <li>Restructuring of scribble data for easy maintenance</li>
+                        <li>Minor UI updates</li>
+                    </ul>
+                </div>
+            </div>
             <div id="feed-wrapper"></div>
         </div>
         <div id="spacer"></div>

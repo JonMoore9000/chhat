@@ -28,7 +28,12 @@
 }
 
 #profile .cl-card, #profile .cl-scrollBox, .cl-card {
-    border-radius: 0;
+    border-radius: 5px;
+}
+
+#profile .cl-card {
+    background: #222;
+    z-index: 10;
 }
 
 .cl-formFieldInput {
@@ -56,4 +61,10 @@
 
 .cl-otpCodeFieldInput:focus {
     border-bottom: 2px solid #fff;
+}
+.cl-internal-1xg0u4s {
+    border-bottom: 1px solid #333;
+}
+.cl-navbarMobileMenuRow {
+    display: none;
 }

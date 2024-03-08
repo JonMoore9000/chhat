@@ -12,12 +12,13 @@
     #menu {
         position: absolute;
         left: -100%;
-        top: 42px;
+        top: 48px;
         border-right: none;
         border-top: 1px solid #888;
         width: 100%;
         background: #222;
         height: calc(100% - 42px);
+        z-index: 10;
     }
     #mobile-menu {
         display: flex;
@@ -27,12 +28,13 @@
         position: fixed;
         background: #222;
         padding: 10px 20px;
+        z-index: 99;
     }
     #mobile-menu i {
-        font-size: 24px;
+        font-size: 28px;
     }
     #mobile-menu img {
-        width: 48px
+        width: 56px
     }
     .menu-img {
         display: none
@@ -55,5 +57,56 @@
     }
     .home-content img {
         width: 100px;
+    }
+    .post-left {
+        width: 35px
+    }
+    .post-right {
+        width: calc(100% - 45px)
+    }
+    .content p, .reply-content {
+        font-size: 13px;
+    }
+    .date {
+        font-size: 13px;
+        margin: 5px 0 0;
+        width: 100%;
+    }
+    .post-meta, .reply-meta {
+        flex-wrap: wrap;
+    }
+    .post-body .fa-circle {
+        display: none;
+    }
+    .reply-user {
+        width: 100%;
+    }
+    #mobile-post {
+        display: block;
+        position: fixed;
+        width: 50px;
+        height: 50px;
+        background: #333;
+        color: #fff;
+        bottom: 15px;
+        right: 20px;
+        border: none;
+        border-radius: 4px;
+        font-size: 18px;
+        z-index: 5;
+    }
+    #open-lightbox, #open-profile, #logoff, #notes-btn {
+        width: 250px;
+    }
+    #notes {
+        font-size: 14px;
+        top: 48px;
+        border-top: 1px solid #555;
+    }
+    .nav-btns {
+        display: none;
+    }
+    .mobile-nav-btns {
+        display: block;
     }
 }
