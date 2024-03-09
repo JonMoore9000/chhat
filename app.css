@@ -4,16 +4,21 @@ html, body {
 
 * {
     box-sizing: border-box;
-    font-family: "Sono", monospace;
+    font-family: "Varela Round", sans-serif;
+    font-style: normal;
 }
 
 :root {
     --primary: #028090;
     --secondary: #00a896;
+    --dark: #040D12;
+    --medium: #183D3D;
+    --light: #5C8374;
+    --lighter: #93B1A6;
 }
 
 body {
-    background: #121212;
+    background: var(--dark);
     color: #fff;
     margin: 0;
 }
@@ -32,7 +37,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #loader {
     position: absolute;
-    background: #121212;
+    background: var(--dark);
     z-index: 999;
     left: 0;
     top: 0;
@@ -78,7 +83,7 @@ h1, h2, h3, h4, h5, h6 {
 #enter, .clerk-logins {
     display: block;
     padding: 10px 25px;
-    border: 1px solid #888;
+    border: 1px solid var(--medium);
     max-width: 300px;
     width: 100%;
     margin: 0 auto 10px;
@@ -89,7 +94,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .clerk-logins:hover, #enter:hover {
     cursor: pointer;
-    background: rgba(255,255,255,.1);
+    background: var(--medium);
 }
 
 .container {
@@ -157,7 +162,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #menu {
     width: 225px;
-    border-right: 1px solid #333;
+    border-right: 1px solid var(--medium);
     padding: 40px 20px 20px;
     transition: linear .25s;
     display: flex;
@@ -181,7 +186,7 @@ h1, h2, h3, h4, h5, h6 {
 #feed {
     width: 650px;
     padding: 20px 0 0;
-    border-right: 1px solid #333;
+    border-right: 1px solid var(--medium);
     overflow-y: auto;
     overflow-x: hidden;
     position: relative;
@@ -191,13 +196,14 @@ h1, h2, h3, h4, h5, h6 {
     position: fixed;
     left: -100%;
     top: 0;
-    background: #222;
+    background: var(--dark);
     transition: linear .25s;
     width: 100%;
     max-width: 600px;
     height: 100%;
     font-weight: 300;
     line-height: 1.5;
+    border-right: 1px solid var(--light);
 }
 
 #notes h2 {
@@ -226,17 +232,17 @@ h1, h2, h3, h4, h5, h6 {
   
   /* Track */
   #feed::-webkit-scrollbar-track {
-    background: #333;
+    background: var(--medium);
   }
   
   /* Handle */
   #feed::-webkit-scrollbar-thumb {
-    background: #777;
+    background: var(--light);
   }
   
   /* Handle on hover */
   #feed::-webkit-scrollbar-thumb:hover {
-    background: #888;
+    background: var(--light);
   }
 
 #post-lightbox, #reply-lightbox {
@@ -251,7 +257,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 input {
-    background-color: #333;
+    background-color: var(--dark);
     color: #fff;
     border: none;
     font-size: 16px;
@@ -273,9 +279,10 @@ input {
     transform: translate(-50%, -50%);
     max-width: 700px;
     width: 100%;
-    background: #111;
+    background: var(--dark);
     padding: 40px;
     border-radius: 5px;
+    border: 1px solid var(--medium);
 }
 
 .post-title {
@@ -293,7 +300,7 @@ input {
 
 .tox-tinymce, .tox .tox-edit-area__iframe {
     border: none !important;
-    background-color: #222 !important;
+    background-color: var(--medium) !important;
 }
 
 .tox:not(.tox-tinymce-inline) .tox-editor-header {
@@ -318,7 +325,7 @@ input {
 
 #submit-post, #submit-reply {
     font-size: 18px;
-    background-color: #333;
+    background-color: var(--medium);
     color: #fff;
     padding: 10px 30px;
     border: none;
@@ -329,15 +336,19 @@ input {
 #open-lightbox, #open-profile, #logoff, #notes-btn,
 #mbl-open-lightbox, #mbl-open-profile, #mbl-logoff, #mbl-notes-btn,
 #mobile-post, #myposts-btn, #mbl-myposts {
-    font-size: 16px;
+    font-size: 15px;
     background-color: transparent;
-    color: #aaa;
+    color: var(--lighter);
     padding: 10px 15px;
-    border: 1px solid #888;
+    border: 1px solid var(--light);
     width: 100%;
     margin-bottom: 10px;
     border-radius: 4px;
     text-align: left;
+}
+
+.user-box button i {
+    width: 20px;
 }
 
 #profile-wrap {
@@ -366,19 +377,19 @@ input {
 
 #open-lightbox:hover, #open-profile:hover, #logoff:hover, #notes-btn:hover,
 #myposts-btn:hover {
-    border: 1px solid #aaa;
+    border: 1px solid #fff;
     color: #fff;
     cursor: pointer;
 }
 
 #submit-post:hover, #delete-posts:hover, #submit-reply:hover {
-    background-color: #555;
+    background-color: var(--light);
     cursor: pointer;
 }
 
 #feed-wrapper .post-body {
     padding: 20px;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--medium);
     width: 100%;
     margin: 0;
     display: flex;
@@ -392,7 +403,7 @@ input {
 
 .fa-circle {
     font-size: 3px;
-    color: #a8a8a8;
+    color: var(--light);
     margin: 0 5px;
     padding-top: 7px;
 }
@@ -408,24 +419,26 @@ input {
 
 .post-meta {
     display: flex;
+    font-size: 13px;
 }
 
 .content {
     margin: -7px 0 0;
     display: block;
+    color: #eee
 }
 
 #feed-wrapper a {
-    color: #fff
+    color: var(--lighter)
 }
 
 .fa-grip-dots {
-    color: #a8a8a8;
+    color: var(--lighter);
     margin: 0 10px;
 }
 
 .fa-message, .fa-angle-down {
-    color: #a8a8a8;
+    color: var(--lighter);
 }
 
 .fa-message:hover, .fa-angle-down:hover {
@@ -434,14 +447,12 @@ input {
 }
 
 .date {
-    color: #a8a8a8;
-    font-size: 14px;
+    color: var(--lighter);
     margin: 0;
 }
 
 .username {
-    color: #a8a8a8;
-    font-size: 14px;
+    color: var(--lighter);
     margin: 0;
 }
 
@@ -461,7 +472,7 @@ input {
 
 .reply {
     padding: 20px;
-    background: #252525;
+    background: var(--medium);
     margin: 10px 0;
     border-radius: 4px;
 }
@@ -469,11 +480,15 @@ input {
 .reply-meta {
     display: flex;
     font-size: 13px;
-    color: #a8a8a8;
+    color: var(--lighter);
 }
 
 .reply-content {
     padding-top: 10px;
+}
+
+.fa-message, .fa-angle-down {
+    color: var(--lighter);
 }
 
 .reply p {
@@ -490,7 +505,8 @@ input {
 
 .reply-stack span {
     padding: 0 10px 0 5px;
-    color: #a8a8a8;
+    color: var(--lighter);
+    font-size: 13px;
 }
 
 .thread {
@@ -525,7 +541,7 @@ input {
     top: 0;
     width: 100%;
     max-width: 650px;
-    background: rgba(0, 0, 0, .85);
+    background: rgba(92, 131, 116, .7);
     backdrop-filter: blur(3px);
     padding: 20px;
     display: flex;
@@ -549,7 +565,7 @@ div#feed-wrapper {
 }
 
 .learn-more {
-    color: #888;
+    color: var(--lighter);
     text-decoration: none;
     display: block;
     width: 100%;
@@ -577,7 +593,7 @@ div#feed-wrapper {
 SWAL 
 -----------------------*/
 .swal2-popup {
-    background: #121212;
+    background: var(--medium);
     color: #fff
 }
 .swal2-container {
@@ -585,18 +601,19 @@ SWAL
     backdrop-filter: blur(3px);
 }
 .swal2-confirm {
-    background: var(--primary);
+    background: var(--light);
     color: #fff;
     font-size: 20px;
-    padding: 5px 25px;
-    border: none
+    padding: 10px 25px;
+    border: none;
+    border-radius: 4px;
 }
 .swal2-title {
     font-size: 22px;
 }
 .swal2-confirm:hover {
     cursor: pointer;
-    background: var(--secondary);
+    background: var(--lighter);
 }
 .swal2-error {
     font-size: 10px;

@@ -52,7 +52,7 @@ $('.learn-more').on('click', () => {
     Swal.fire({
         //icon: "error",
         title: "What is nmbl?",
-        text: "At nmbl, we believe in keeping things simple and stress-free. Our platform is designed to provide a seamless and enjoyable social experience for everyone. Say goodbye to cluttered feeds and complicated interfaces - with nmbl, simplicity is key. Whether you're connecting with friends, sharing moments, or discovering new interests, our user-friendly approach ensures that navigating our platform is always a breeze. Join us in embracing the joy of simplicity, and let Nmbl be your go-to destination for hassle-free social networking.",
+        text: "At nmbl, we believe in keeping things simple and stress-free. Our platform is designed to provide a seamless and enjoyable social experience for everyone. Say goodbye to cluttered feeds and complicated interfaces - with nmbl, simplicity is key. Whether you're connecting with friends, sharing moments, or discovering new interests, our user-friendly approach ensures that navigating our platform is always a breeze. Join us in embracing the joy of simplicity, and let mmbl be your go-to destination for hassle-free social networking.",
         buttonsStyling: false,
         customClass: {
             popup: 'learn-pop',
