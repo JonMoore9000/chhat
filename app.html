@@ -21,7 +21,7 @@
     <div id="mobile-nav">
         <button id="mbl-open-profile"><i class="fa-light fa-user"></i></button>
         <button id="mbl-notes-btn"><i class="fa-light fa-sparkles"></i></button>
-        <button id="mbl-myposts"><i class="fa-light fa-bookmark"></i></button>
+        <button id="mbl-topics"><i class="fa-light fa-layer-group"></i></button>
         <button id="mbl-logoff"><i class="fa-light fa-right-from-bracket"></i></button>
         <button id="mobile-post"><i class="fa-sharp fa-light fa-feather"></i></button>
     </div>
@@ -40,6 +40,17 @@
                         <h2 class="post-title">What's happening?</h2>
                         <textarea id="tiny"></textarea>
                         <button id="submit-post">Post</button>
+                        <select id="post-topic">
+                            <option value="choose">Topic</option>
+                            <option value="news">News</option>
+                            <option value="tech">Tech</option>
+                            <option value="politics">Politics</option>
+                            <option value="health">Health</option>
+                            <option value="music">Music</option>
+                            <option value="sports">Sports</option>
+                            <option value="memes">Memes</option>
+                            <option value="culture">Culture</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -74,7 +85,6 @@
                 <div class="nav-btns">
                     <button id="open-lightbox"><i class="fa-sharp fa-light fa-feather"></i> Scribble</button>
                     <button id="open-profile"><i class="fa-light fa-user"></i> Account</button>
-                    <button id="myposts-btn"><i class="fa-light fa-bookmark"></i> My Scribbles</button>
                     <button id="notes-btn"><i class="fa-light fa-sparkles"></i> What's New</button>
                     <button id="logoff"><i class="fa-light fa-right-from-bracket"></i> Log out</button>
                     <a class="learn-more" href="#/"><i class="fa-light fa-circle-info"></i> Learn More</a>
@@ -87,6 +97,7 @@
             <div class="feed-top">
                 <p>The Feed</p>
                 <i class="fa-light fa-arrows-rotate"></i>
+
             </div>
             <div id="notes">
                 <div class="notes-inner">
@@ -101,36 +112,50 @@
                         <li>New floating mobile menu</li>
                         <li>Added in feature to track total scribbles</li>
                         <li>EMOJIS!</li>
-                        <li>Added in a "My Scribbles" features where users can keep track of
-                            all of the scribbles they created.</li>
                         <li>Complete color overhaul</li>
+                        <li>Topic system: filter scribbles through trneding topics.</li>
                     </ul>
                 </div>
             </div>
             <div id="feed-wrapper"></div>
         </div>
-        <div id="spacer"></div>
+        <div id="spacer">
+            <div class="topic-container">
+                <i class="fa-light fa-xmark close-topics" aria-hidden="true"></i>
+                <h2>Topics</h2>
+                <button id="news"><i class="fa-light fa-newspaper"></i> News</button>
+                <button id="tech"><i class="fa-light fa-binary"></i> Tech</button>
+                <button id="politics"><i class="fa-light fa-landmark"></i> Politics</button>
+                <button id="health"><i class="fa-light fa-star-of-life"></i> Health</button>
+                <button id="music"><i class="fa-light fa-music"></i> Music</button>
+                <button id="sports"><i class="fa-light fa-hockey-stick-puck"></i> Sports</button>
+                <button id="memes"><i class="fa-light fa-meteor"></i> Memes</button>
+                <button id="culture"><i class="fa-light fa-camera-retro"></i> Culture</button>
+            </div>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script>tinymce.init({
-            selector: 'textarea',
-            skin: window.matchMedia("(prefers-color-scheme: dark)").matches ? "oxide-dark" : "oxide", content_css: window.matchMedia("(prefers-color-scheme: dark)").matches
-            ? "dark" : "default",
-            plugins: 'link | image | emoticons',
-            menubar: 'insert file',
-            toolbar: 'styles | bold italic | emoticons | link | image',
-            image_dimensions: false,
-            image_description: false,
-            toolbar_location: 'bottom',
-            tinycomments_mode: 'embedded',
-            tinycomments_author: 'Author name',
-            mergetags_list: [
-            { value: 'First.Name', title: 'First Name' },
-            { value: 'Email', title: 'Email' },
-            ],
-            ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
-        });</script>
+    <script>
+        setTimeout(() => {
+            tinymce.init({
+                selector: 'textarea',
+                skin: window.matchMedia("(prefers-color-scheme: dark)").matches ? "oxide-dark" : "oxide", content_css: window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark" : "default",
+                plugins: 'link | image | emoticons | wordcount | paste',
+                menubar: 'insert file',
+                toolbar: 'styles | bold italic | emoticons | link | image',
+                object_resizing: false,
+                content_style: "@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap'); img { width: 200px; border-radius: 4px; margin-top: 10px; display: block; } * {font-family: 'Varela Round', sans-serif;}",
+                image_dimensions: false,
+                image_description: false,
+                toolbar_location: 'bottom',
+                tinycomments_mode: 'embedded',
+                tinycomments_author: 'Author name',
+                paste_as_text: true
+            });
+        }, 300)
+        </script>
     <script src="app.js"></script>
     <script src="login.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

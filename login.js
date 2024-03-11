@@ -37,6 +37,13 @@ script.addEventListener('load', async function () {
           window.location.href = 'index.html';
         })
     } 
+
+    // send user back to login if trying to access app without account
+    if(!Clerk.user) {
+      if(window.location.pathname == '/app') {
+        window.location.href = '/';
+      }
+    }
     
 
 });

@@ -2,12 +2,23 @@
     body, html {
         overflow: auto;
     }
+    #main {
+        position: relative;
+        overflow-x: hidden;
+    }
     #feed {
         width: 100%;
         padding-top: 50px;
     }
     #spacer {
-        display: none;
+        position: absolute;
+        top: 0;
+        right: -225px;
+        z-index: 99;
+        background: var(--dark);
+        height: 100%;
+        border-left: 1px solid var(--medium);
+        transition: linear .15s;
     }
     #menu {
         position: absolute;
@@ -143,5 +154,19 @@
         height: calc(100vh - 110px);
         transform: none;
         z-index: 10;
+    }
+    .topic-tag {
+        margin: 5px 0 0 0;
+    }
+    .spacer-in {
+        right: 0 !important
+    }
+    .close-topics {
+        display: block;
+        top: 8px;
+        color: #fff;
+        left: 10px;
+        font-size: 20px;
+
     }
 }

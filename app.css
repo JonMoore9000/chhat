@@ -323,7 +323,7 @@ input {
     cursor: pointer;
 }
 
-#submit-post, #submit-reply {
+#submit-post, #submit-reply, #post-topic {
     font-size: 18px;
     background-color: var(--medium);
     color: #fff;
@@ -333,9 +333,14 @@ input {
     border-radius: 4px;
 }
 
+#post-topic {
+    height: 42px;
+    transform: translateY(1px);
+}
+
 #open-lightbox, #open-profile, #logoff, #notes-btn,
 #mbl-open-lightbox, #mbl-open-profile, #mbl-logoff, #mbl-notes-btn,
-#mobile-post, #myposts-btn, #mbl-myposts {
+#mobile-post, #myposts-btn, #mbl-myposts, #mobile-nav button {
     font-size: 15px;
     background-color: transparent;
     color: var(--lighter);
@@ -345,6 +350,42 @@ input {
     margin-bottom: 10px;
     border-radius: 4px;
     text-align: left;
+}
+
+.close-topics {
+    display: none;
+}
+
+.topic-container button {
+    font-size: 15px;
+    background-color: transparent;
+    color: var(--lighter);
+    padding: 5px 0;
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    text-align: left;
+    border: none;
+}
+
+p.topic-tag {
+    margin: 0;
+    border-radius: 3px;
+    color: var(--lighter);
+    text-transform: lowercase;
+}
+
+#tinymce img {
+    width: 300px
+}
+
+.topic-container button:hover {
+    color: #fff;
+    cursor: pointer;
+}
+
+.topic-container button i {
+    width: 22px;
 }
 
 .nav-btns button {
@@ -386,7 +427,7 @@ input {
     cursor: pointer;
 }
 
-#submit-post:hover, #delete-posts:hover, #submit-reply:hover {
+#submit-post:hover, #delete-posts:hover, #submit-reply:hover, #post-topic:hover {
     background-color: var(--light);
     cursor: pointer;
 }
@@ -591,6 +632,9 @@ div#feed-wrapper {
     line-height: 1.4 !important;
     color: #ccc !important;
     padding: 0 5px !important;
+}
+.topic-container {
+    padding: 20px;
 }
 
 /*-----------------------
