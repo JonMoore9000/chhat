@@ -21,7 +21,8 @@ script.addEventListener('load', async function () {
     //window.Clerk.mountSignUp(signUpComponent, {});
 
     if(Clerk.user) {
-
+      pin = Clerk.user.unsafeMetadata.pinned
+      console.log(Clerk.user)
         window.Clerk.mountUserProfile(userProfileComponent);
         $('#enter').show()
         $('.clerk-sign-in').hide()
@@ -32,9 +33,25 @@ script.addEventListener('load', async function () {
         $('#username').text(user)
         $('#user-img').attr('src', Clerk.user.imageUrl)
 
-        $('#logoff').on('click', () => {
+        $('#logoff, #mbl-logoff').on('click', () => {
           window.Clerk.signOut();
           window.location.href = 'index.html';
+        })
+        $(document).on('click', '.pinpost', (e) => {
+          post_id = $(e.currentTarget).data("num");
+          console.log(post_id)
+          pin = post_id
+            Clerk.user.update({
+              unsafeMetadata : {
+                "pinned": post_id
+              }
+            })
+            Swal.fire({
+              icon: "success",
+              title: "New pin!",
+              //text: "At nmbl, we believe in keeping things simple and stress-free. Our platform is built by a single person and is designed to provide a seamless and enjoyable social experience for everyone. Say goodbye to cluttered feeds and complicated interfaces - with nmbl, simplicity is key. Whether you're connecting with new friends, sharing moments, or simply mindlessly scrolling, our user-friendly approach ensures that navigating our platform is always a breeze. Join us in embracing the joy of simplicity, and let nmbl be your go-to destination for hassle-free social networking.",
+              buttonsStyling: false,
+          });
         })
     } 
 

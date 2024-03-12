@@ -2,6 +2,7 @@ let user;
 let avatar;
 let scribbles = 0;
 let topic;
+let pin;
 const now = new Date();
 let currentDateTime = now.toLocaleString([], {day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute:'2-digit'});
 
@@ -58,6 +59,9 @@ $('#myposts-btn').on('click', () => {
 })
 $(document).on('click', '.fa-angle-down', (e) => {
     $(e.currentTarget).closest('.post-body').find('.thread').slideToggle()
+})
+$('#pinned, #mbl-pin').on('click', () => {
+    getPost(showPinPost)
 })
 $('.learn-more').on('click', () => {
     Swal.fire({
@@ -288,9 +292,12 @@ const showPost = (data) => {
         </div>
         <div class="content">${item.content}</div>
         <div class="reply-stack">
+        <div>
         <i data-num="${item._id}" class="fa-sharp fa-thin fa-message"></i>
         <span>${item.replies.length}</span>
         <i class="fa-thin fa-angle-down"></i>
+        </div>
+        <i data-num="${item._id}"  class="pinpost fa-thin fa-thumbtack"></i>
         </div>
         <div class="thread">${reply}</div>
         </div>
@@ -407,9 +414,12 @@ const showTopicPost = (data) => {
             </div>
             <div class="content">${item.content}</div>
             <div class="reply-stack">
+            <div>
             <i data-num="${item._id}" class="fa-sharp fa-thin fa-message"></i>
             <span>${item.replies.length}</span>
             <i class="fa-thin fa-angle-down"></i>
+            </div>
+            <i data-num="${item._id}"  class="pinpost fa-thin fa-thumbtack"></i>
             </div>
             <div class="thread">${reply}</div>
             </div>
@@ -423,6 +433,64 @@ const showTopicPost = (data) => {
     $('.thread').hide()
 }
 
+// show topic post
+const showPinPost = (data) => {
+    data.reverse()
+
+    let posts = ''
+    
+        posts = data.map((item) => {
+            if(item._id == pin) {
+
+            let reply = ''
+
+            for (let i = 0; i < item.replies.length; i++) {
+                if(item.replies[i].content) {
+                    reply += '<div class="reply">'
+                    + '<div class="reply-meta">'
+                    + '<p class="reply-user">' + item.replies[i].user + '</p>'
+                    + '<i class="fa-solid fa-circle"></i>'
+                    + '<p>' + item.replies[i].date + '</p>'
+                    + '</div>'
+                    +  '<p class="reply-content">' + item.replies[i].content + '</p>'
+                    + '</div>';
+                }
+            }
+            
+
+            return `<div class="post-body">
+
+            <div class="post-left">
+            <img src="${item.avatar}">
+            </div>
+
+            <div class="post-right">
+            <div class="post-meta">
+            <p class="username">${item.user}</p> 
+            <i class="fa-solid fa-circle"></i>
+            <p class="date">${item.date}</p>
+            <i class="fa-solid fa-circle"></i>
+            <p class="topic-tag">#${item.topic}</p>
+            </div>
+            <div class="content">${item.content}</div>
+            <div class="reply-stack">
+            <div>
+            <i data-num="${item._id}" class="fa-sharp fa-thin fa-message"></i>
+            <span>${item.replies.length}</span>
+            <i class="fa-thin fa-angle-down"></i>
+            </div>
+            </div>
+            <div class="thread">${reply}</div>
+            </div>
+
+            
+            </div>
+            `
+        }
+    })
+    $('#feed-wrapper').html(posts)
+    $('.thread').hide()
+}
 
 $('#news').on('click',  () => {
     keyword = 'news'

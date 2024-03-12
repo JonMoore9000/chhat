@@ -338,9 +338,7 @@ input {
     transform: translateY(1px);
 }
 
-#open-lightbox, #open-profile, #logoff, #notes-btn,
-#mbl-open-lightbox, #mbl-open-profile, #mbl-logoff, #mbl-notes-btn,
-#mobile-post, #myposts-btn, #mbl-myposts, #mobile-nav button {
+#mobile-nav button, .nav-btns button {
     font-size: 15px;
     background-color: transparent;
     color: var(--lighter);
@@ -421,7 +419,7 @@ p.topic-tag {
 }
 
 #open-lightbox:hover, #open-profile:hover, #logoff:hover, #notes-btn:hover,
-#myposts-btn:hover {
+#myposts-btn:hover, .nav-btns button:hover {
     border: 1px solid #fff;
     color: #fff;
     cursor: pointer;
@@ -472,7 +470,10 @@ p.topic-tag {
     display: block;
     color: #eee
 }
-
+.reply-stack div {
+    display: flex;
+    align-items: center;
+}
 #feed-wrapper a {
     color: var(--lighter)
 }
@@ -536,6 +537,15 @@ p.topic-tag {
     color: var(--lighter);
 }
 
+.reply-stack .fa-thumbtack {
+    color: var(--lighter);
+}
+
+.reply-stack .fa-thumbtack:hover {
+    color: #fff;
+    cursor: pointer;
+}
+
 .reply p {
     margin: 0;
 }
@@ -546,6 +556,7 @@ p.topic-tag {
     margin-bottom: 0;
     width: 100%;
     padding-left: 5px;
+    justify-content: space-between;
 }
 
 .reply-stack span {
