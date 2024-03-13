@@ -1,8 +1,9 @@
-let user;
-let avatar;
-let scribbles = 0;
-let topic;
-let pin;
+let user
+let avatar
+let scribbles = 0
+let topic
+let pin
+let pinArr = []
 const now = new Date();
 let currentDateTime = now.toLocaleString([], {day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute:'2-digit'});
 
@@ -433,15 +434,16 @@ const showTopicPost = (data) => {
     $('.thread').hide()
 }
 
-// show topic post
+// show pinned post
 const showPinPost = (data) => {
     data.reverse()
-
     let posts = ''
-    
-        posts = data.map((item) => {
-            if(item._id == pin) {
+    let counter = 0
 
+        posts = data.map((item) => {
+
+            if((item._id == pinArr[0]) || (item._id == pinArr[1]) || (item._id == pinArr[2])) {
+            //console.log(pinArr)
             let reply = ''
 
             for (let i = 0; i < item.replies.length; i++) {
@@ -479,14 +481,16 @@ const showPinPost = (data) => {
             <span>${item.replies.length}</span>
             <i class="fa-thin fa-angle-down"></i>
             </div>
+            <i data-num="${item._id}" class="fa-kit fa-light-thumbtack-slash"></i>
             </div>
             <div class="thread">${reply}</div>
             </div>
 
-            
             </div>
             `
+            
         }
+        counter++
     })
     $('#feed-wrapper').html(posts)
     $('.thread').hide()

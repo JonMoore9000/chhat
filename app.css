@@ -537,11 +537,12 @@ p.topic-tag {
     color: var(--lighter);
 }
 
-.reply-stack .fa-thumbtack {
+.reply-stack .fa-thumbtack, .fa-light-thumbtack-slash {
     color: var(--lighter);
 }
 
-.reply-stack .fa-thumbtack:hover {
+.reply-stack .fa-thumbtack:hover,
+.fa-light-thumbtack-slash:hover {
     color: #fff;
     cursor: pointer;
 }
@@ -651,6 +652,9 @@ div#feed-wrapper {
 /*-----------------------
 SWAL 
 -----------------------*/
+#app.swal2-height-auto {
+    height: 100% !important;
+}
 .swal2-popup {
     background: var(--medium);
     color: #fff

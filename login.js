@@ -21,7 +21,10 @@ script.addEventListener('load', async function () {
     //window.Clerk.mountSignUp(signUpComponent, {});
 
     if(Clerk.user) {
-      pin = Clerk.user.unsafeMetadata.pinned
+      if(Clerk.user.unsafeMetadata.arr) {
+        pinArr = Clerk.user.unsafeMetadata.arr
+      }
+      
       console.log(Clerk.user)
         window.Clerk.mountUserProfile(userProfileComponent);
         $('#enter').show()
@@ -37,21 +40,51 @@ script.addEventListener('load', async function () {
           window.Clerk.signOut();
           window.location.href = 'index.html';
         })
+        // add pin
         $(document).on('click', '.pinpost', (e) => {
-          post_id = $(e.currentTarget).data("num");
-          console.log(post_id)
-          pin = post_id
-            Clerk.user.update({
-              unsafeMetadata : {
-                "pinned": post_id
-              }
-            })
+          if(pinArr.length <= 2) {
+            post_id = $(e.currentTarget).data("num");
+            console.log(post_id)
+            pin = post_id
+            pinArr.push(post_id)
+            console.log(pinArr)
+              Clerk.user.update({
+                unsafeMetadata : {
+                  "arr": pinArr
+                }
+              })
+              Swal.fire({
+                icon: "success",
+                title: "New pin!",
+                buttonsStyling: false,
+            });
+          } else {
             Swal.fire({
-              icon: "success",
-              title: "New pin!",
-              //text: "At nmbl, we believe in keeping things simple and stress-free. Our platform is built by a single person and is designed to provide a seamless and enjoyable social experience for everyone. Say goodbye to cluttered feeds and complicated interfaces - with nmbl, simplicity is key. Whether you're connecting with new friends, sharing moments, or simply mindlessly scrolling, our user-friendly approach ensures that navigating our platform is always a breeze. Join us in embracing the joy of simplicity, and let nmbl be your go-to destination for hassle-free social networking.",
+              icon: "error",
+              title: "Max number of pins added!",
               buttonsStyling: false,
-          });
+            });
+          }
+        })
+
+        // remove pin
+        $(document).on('click', '.fa-light-thumbtack-slash', (e) => {
+            post_id = $(e.currentTarget).data("num");
+            const index = pinArr.indexOf(post_id);
+            if (index > -1) { 
+              pinArr.splice(index, 1)
+            }
+            console.log(pinArr)
+              Clerk.user.update({
+                unsafeMetadata : {
+                  "arr": pinArr
+                }
+              })
+              Swal.fire({
+                icon: "success",
+                title: "Pin removed!",
+                buttonsStyling: false,
+            });
         })
     } 
 
