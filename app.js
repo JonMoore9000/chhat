@@ -72,7 +72,21 @@ $('.learn-more').on('click', () => {
         buttonsStyling: false,
         customClass: {
             popup: 'learn-pop',
-            htmlContainer: 'learn-text'
+            htmlContainer: 'learn-text',
+        }
+    });
+})
+
+$('.rules').on('click', () => {
+    Swal.fire({
+        //icon: "error",
+        title: "The Rules",
+        confirmButtonText: 'Got it',
+        text: "Here at nmbl we are building a relaxed and friendly community. Any user caught spoiling the fun will be swiftly banned. Harassing other users, posting super NSFW content, and other obvious actions will get you the boot. Let's all just hang out, chat and learn some stuff.",
+        buttonsStyling: false,
+        customClass: {
+            popup: 'learn-pop',
+            htmlContainer: 'learn-text',
         }
     });
 })
@@ -111,10 +125,13 @@ $('#submit-post').on('click', (event) => {
     console.log(topic)
     var numChars = tinymce.activeEditor.plugins.wordcount.body.getCharacterCount();
     var max = 300;
+
+    let word = 'nigger'
+
     if(post == '') {
         Swal.fire({
             icon: "error",
-            title: "Looks like you forgot to type something",
+            title: "Looks like you forgot to type something.",
             buttonsStyling: false
         });
         event.preventDefault();
@@ -122,7 +139,7 @@ $('#submit-post').on('click', (event) => {
     } else if (numChars > max) {
         Swal.fire({
             icon: "error",
-            title: "Maximum characters allowed",
+            title: "Maximum characters allowed.",
             text: `Max amount is 300 - You have ${numChars}`,
             buttonsStyling: false,
         });
@@ -136,6 +153,17 @@ $('#submit-post').on('click', (event) => {
         });
         event.preventDefault();
         return false;
+    } else if (post.indexOf(word)!=-1) {
+        Swal.fire({
+            icon: "error",
+            title: "You're better than that.",
+            buttonsStyling: false,
+            customClass: {
+                popup: 'learn-pop',
+                htmlContainer: 'learn-text',
+            },
+            confirmButtonText: 'I\'m sorry'
+        });
     } else {
         sendPost(post)
         console.log(user)
@@ -251,7 +279,7 @@ const showPost = (data) => {
     scribbles = 0
     data.reverse()
     $('.thread').hide()
-    console.log(data)
+    //console.log(data)
     let posts = ''
     
     posts = data.map((item) => {
@@ -442,7 +470,7 @@ const showPinPost = (data) => {
 
         posts = data.map((item) => {
 
-            if((item._id == pinArr[0]) || (item._id == pinArr[1]) || (item._id == pinArr[2])) {
+            if((item._id == pinArr[0]) || (item._id == pinArr[1]) || (item._id == pinArr[2]) || (item._id == pinArr[3]) || (item._id == pinArr[4])) {
             //console.log(pinArr)
             let reply = ''
 
@@ -526,6 +554,10 @@ $('#memes').on('click',  () => {
 })
 $('#culture').on('click',  () => {
     keyword = 'culture'
+    getPost(showTopicPost)
+})
+$('#gaming').on('click',  () => {
+    keyword = 'gaming'
     getPost(showTopicPost)
 })
 

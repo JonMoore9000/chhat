@@ -25,7 +25,7 @@ script.addEventListener('load', async function () {
         pinArr = Clerk.user.unsafeMetadata.arr
       }
       
-      console.log(Clerk.user)
+      //console.log(Clerk.user)
         window.Clerk.mountUserProfile(userProfileComponent);
         $('#enter').show()
         $('.clerk-sign-in').hide()
@@ -42,7 +42,7 @@ script.addEventListener('load', async function () {
         })
         // add pin
         $(document).on('click', '.pinpost', (e) => {
-          if(pinArr.length <= 2) {
+          if(pinArr.length <= 4) {
             post_id = $(e.currentTarget).data("num");
             console.log(post_id)
             pin = post_id

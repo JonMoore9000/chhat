@@ -90,6 +90,7 @@ h1, h2, h3, h4, h5, h6 {
     transition: linear .15s;
     color: #fff;
     text-decoration: none;
+    border-radius: 5px;
 }
 
 .clerk-logins:hover, #enter:hover {
@@ -621,7 +622,7 @@ div#feed-wrapper {
     transform: rotate(45deg);
 }
 
-.learn-more {
+.small-nav {
     color: var(--lighter);
     text-decoration: none;
     display: block;
@@ -631,7 +632,11 @@ div#feed-wrapper {
     font-size: 14px;
 }
 
-.learn-more:hover {
+.small-nav i {
+    padding-right: 3px;
+}
+
+.small-nav:hover {
     color: #fff;
 }
 
@@ -647,6 +652,17 @@ div#feed-wrapper {
 }
 .topic-container {
     padding: 20px;
+}
+
+#built-with img {
+    height: 20px;
+    width: 110px;
+}
+#built-with {
+    display: flex;
+    margin-top: 50px;
+    align-items: center;
+    justify-content: center;
 }
 
 /*-----------------------

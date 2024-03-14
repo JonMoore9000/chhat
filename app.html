@@ -44,6 +44,7 @@
                             <option value="choose">Topic</option>
                             <option value="news">News</option>
                             <option value="tech">Tech</option>
+                            <option value="gaming">Gaming</option>
                             <option value="politics">Politics</option>
                             <option value="health">Health</option>
                             <option value="music">Music</option>
@@ -76,8 +77,9 @@
         <div id="mobile-menu">
             <img src="assets/log-n.svg">
             <div>
-                <i id="mbl-logoff" class="fa-light fa-right-from-bracket"></i>
                 <i class="learn-more fa-light fa-circle-info"></i>
+                <i class="rules fa-light fa-lock"></i>
+                <i id="mbl-logoff" class="fa-light fa-right-from-bracket"></i>
             </div>
         </div>
         <div id="menu">
@@ -91,7 +93,8 @@
                     <button id="notes-btn"><i class="fa-light fa-sparkles"></i> What's New</button>
                     <button id="pinned"><i class="fa-light fa-bookmark"></i> Pinned</button>
                     <button id="logoff"><i class="fa-light fa-right-from-bracket"></i> Log out</button>
-                    <a class="learn-more" href="#/"><i class="fa-light fa-circle-info"></i> Learn More</a>
+                    <a class="learn-more small-nav" href="#/"><i class="fa-light fa-circle-info"></i> Learn More</a>
+                    <a class="rules small-nav" href="#/"><i class="fa-light fa-lock"></i> Rules</a>
                 </div>
             </div>
             
@@ -108,18 +111,15 @@
                     <i class="fa-light fa-xmark"></i>
                     <h2>What's new?</h2>
                     <ul>
-                        <li>Included user avatar in scribble</li>
-                        <li>Updated date and time format</li>
-                        <li>Added floating scribble button on mobile</li>
-                        <li>Restructuring of scribble data for easy maintenance</li>
-                        <li>Minor UI updates</li>
-                        <li>New floating mobile menu</li>
                         <li>Added in feature to track total scribbles</li>
                         <li>EMOJIS!</li>
                         <li>Complete color overhaul</li>
                         <li>Topic system: filter scribbles through trneding topics.</li>
-                        <li>Users can now pin three posts to keep up with conversations.</li>
+                        <li>Users can now pin five posts to keep up with conversations.</li>
                     </ul>
+                    <h2>What's coming?</h2>
+                    <li>More robost profile editing.</li>
+                    <li>The ability to view other user's profiles.</li>
                 </div>
             </div>
             <div id="feed-wrapper"></div>
@@ -130,6 +130,7 @@
                 <h2>Topics</h2>
                 <button id="news"><i class="fa-light fa-newspaper"></i> News</button>
                 <button id="tech"><i class="fa-light fa-binary"></i> Tech</button>
+                <button id="gaming"><i class="fa-light fa-gamepad-modern"></i> Gaming</button>
                 <button id="politics"><i class="fa-light fa-landmark"></i> Politics</button>
                 <button id="health"><i class="fa-light fa-star-of-life"></i> Health</button>
                 <button id="music"><i class="fa-light fa-music"></i> Music</button>

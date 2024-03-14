@@ -8,7 +8,8 @@
     }
     #feed {
         width: 100%;
-        padding-top: 50px;
+        padding: 50px 0;
+
     }
     #spacer {
         position: absolute;
@@ -172,5 +173,15 @@
         left: 10px;
         font-size: 20px;
 
+    }
+    .topic-container {
+        padding: 40px 20px 20px;
+    }
+    .close-topics {
+        font-size: 26px;
+    }
+    #built-with img {
+        height: 17px;
+        width: 85px;
     }
 }
