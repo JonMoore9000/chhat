@@ -469,7 +469,8 @@ p.topic-tag {
 .content {
     margin: -7px 0 0;
     display: block;
-    color: #eee
+    color: #eee;
+    word-wrap: break-word;
 }
 .reply-stack div {
     display: flex;
