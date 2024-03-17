@@ -4,6 +4,8 @@ let scribbles = 0
 let topic
 let pin
 let pinArr = []
+let bio
+let website
 const now = new Date();
 let currentDateTime = now.toLocaleString([], {day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute:'2-digit'});
 
@@ -25,10 +27,15 @@ $('#reply-lightbox').hide()
 $('#profile-wrap').hide()
 $('#sign-in').hide()
 $('.signup-footer').hide()
+$('#edit-profile-lightbox').hide()
 
 $('#open-lightbox, #mobile-post').on('click', () => {
     $('#post-lightbox').show()
     $('#menu').removeClass('slide-in')
+})
+
+$('#edit-profile-btn, #edit-profile-close').on('click', () => {
+    $('#edit-profile-lightbox').toggle()
 })
 
 $('.close-post').on('click', () => {
@@ -91,6 +98,19 @@ $('.rules').on('click', () => {
     });
 })
 
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#prefile-img-preview')
+                .attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
 /*---------------------
 MOBILE BTNS
 ---------------------*/
@@ -100,8 +120,8 @@ $('#mbl-notes-btn').on('click', () => {
 $('#mbl-open-lightbox, #mobile-post').on('click', () => {
     $('#post-lightbox').show()
 })
-$('#mbl-open-profile').on('click', () => {
-    $('#profile-wrap').show()
+$('#mbl-open-profile, #edit-mbl-profile-close').on('click', () => {
+    $('#menu').toggleClass('slide-in')
 })
 $('#mbl-myposts').on('click', () => {
     getPost(showMyPost)

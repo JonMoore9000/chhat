@@ -26,11 +26,12 @@
         left: -100%;
         top: 48px;
         border-right: none;
-        border-top: 1px solid #888;
+        border-top: 1px solid var(--light);
         width: 100%;
-        background: #222;
-        height: calc(100% - 42px);
+        background: var(--dark);
+        height: calc(100% - 48px);
         z-index: 10;
+        padding: 20px;
     }
     #mobile-menu {
         display: flex;
@@ -47,9 +48,6 @@
         width: auto;
         margin: 0 5px;
         color: var(--lighter);
-    }
-    .learn-more {
-        margin-left: 10px
     }
     #mobile-menu img {
         width: 56px
@@ -100,8 +98,11 @@
     .reply-user {
         width: 100%;
     }
-    #open-lightbox, #open-profile, #logoff, #notes-btn {
+    .nav-btns button {
         width: 250px;
+    }
+    #notes-btn, #pinned {
+        display: none;
     }
     #notes {
         font-size: 14px;
@@ -156,9 +157,9 @@
         position: absolute;
         top: 53px;
         left: 5px;
-        height: calc(100vh - 110px);
+        height: calc(100% - 60px);
         transform: none;
-        z-index: 10;
+        z-index: 999;
     }
     .topic-tag {
         margin: 5px 0 0 0;
@@ -183,5 +184,13 @@
     #built-with img {
         height: 17px;
         width: 85px;
+    }
+    #edit-mbl-profile-close {
+        display: block;
+        top: 10px;
+        left: 10px;
+    }
+    #mobile-menu .fa-lock, #mobile-menu .fa-right-from-bracket {
+        display: none;
     }
 }

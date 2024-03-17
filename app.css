@@ -246,7 +246,7 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--light);
   }
 
-#post-lightbox, #reply-lightbox {
+#post-lightbox, #reply-lightbox, #edit-profile-lightbox {
     position: absolute;
     left: 0;
     top: 0;
@@ -255,6 +255,79 @@ h1, h2, h3, h4, h5, h6 {
     background: rgba(0,0,0,.3);
     backdrop-filter: blur(4px);
     z-index: 20;
+}
+
+#edit-profile-close {
+    top: -35px;
+    left: 0px;
+    font-size: 30px;
+}
+
+.profile-img {
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--light);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+img#prefile-img-preview {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+#update-profile {
+    padding: 10px 30px;
+    background: var(--light);
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    margin-top: 20px;
+    transition: linear .15s;
+}
+
+#update-profile:hover {
+    background: var(--lighter);
+    cursor: pointer;
+}
+
+#website {
+    text-decoration: none;
+    color: var(--light);
+    word-wrap: break-word;
+    font-size: 14px;
+}
+
+#website:hover {
+    color: var(--lighter);
+}
+
+#bio {
+    margin: 5px;
+    word-wrap: break-word;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--lighter);
+}
+
+.bio {
+    margin-bottom: 20px;
+}
+
+.profile-input::placeholder {
+    color: var(--light);
+}
+
+.profile-input {
+    background: var(--medium);
+    border-radius: 5px;
+}
+
+input#myFile {
+    padding: 10px 0;
 }
 
 input {
@@ -266,14 +339,14 @@ input {
     width: 100%;
 }
 
-#create-post, #create-reply {
+#create-post, #create-reply, #edit-profile {
     width: calc(100% - 80px);
     margin: auto;
     position: relative;
     height: 100%;
 }
 
-.input-box {
+.input-box, .edit-form {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -419,7 +492,7 @@ p.topic-tag {
     z-index: 5;
 }
 
-#open-lightbox:hover, #open-profile:hover, #logoff:hover, #notes-btn:hover,
+#open-lightbox:hover, #logoff:hover, #notes-btn:hover,
 #myposts-btn:hover, .nav-btns button:hover {
     border: 1px solid #fff;
     color: #fff;
@@ -506,6 +579,7 @@ p.topic-tag {
 
 .user-box {
     text-align: center;
+    width: 100%;
 }
 
 #user-img{
@@ -585,6 +659,10 @@ p.topic-tag {
     border-radius: 5px;
     width: 100%;
     height: auto;
+}
+
+#edit-mbl-profile-close {
+    display: none;
 }
 
 .tox .tox-editor-container {

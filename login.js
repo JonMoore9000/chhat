@@ -24,13 +24,28 @@ script.addEventListener('load', async function () {
       if(Clerk.user.unsafeMetadata.arr) {
         pinArr = Clerk.user.unsafeMetadata.arr
       }
-      
+      // set bio
+      if(Clerk.user.unsafeMetadata.bio) {
+        bio = Clerk.user.unsafeMetadata.bio
+        $('#bio').text(Clerk.user.unsafeMetadata.bio)
+      } else {
+        $('#bio').text('')
+      }
+      // set website
+      if(Clerk.user.unsafeMetadata.website) {
+        website = Clerk.user.unsafeMetadata.website
+        $('#website').attr('href', Clerk.user.unsafeMetadata.website)
+      } else {
+        $('#website').text('')
+        $('#website').attr('href', '')
+      }
       //console.log(Clerk.user)
         window.Clerk.mountUserProfile(userProfileComponent);
         $('#enter').show()
         $('.clerk-sign-in').hide()
         $('.clerk-sign-up').hide()
         user = Clerk.user.username
+        console.log(Clerk.user)
         console.log(`welcome back ${user}`)
         avatar = Clerk.user.imageUrl
         $('#username').text(user)
@@ -50,7 +65,9 @@ script.addEventListener('load', async function () {
             console.log(pinArr)
               Clerk.user.update({
                 unsafeMetadata : {
-                  "arr": pinArr
+                  "arr": pinArr,
+                  "bio": bio,
+                  "website": website,
                 }
               })
               Swal.fire({
@@ -77,7 +94,9 @@ script.addEventListener('load', async function () {
             console.log(pinArr)
               Clerk.user.update({
                 unsafeMetadata : {
-                  "arr": pinArr
+                  "arr": pinArr,
+                  "bio": bio,
+                  "website": website,
                 }
               })
               Swal.fire({
@@ -87,6 +106,25 @@ script.addEventListener('load', async function () {
             });
         })
     } 
+
+    // update profile info
+    $('#update-profile').on('click', () => {
+      let nbio = $('.bio').val()
+      let nwebsite = $('.website').val()
+        Clerk.user.update({ 
+          unsafeMetadata : {
+            "bio": nbio,
+            "website": nwebsite,
+            "arr": pinArr
+          }
+        })
+        $('#update-profile').text('Processing...')
+        setTimeout(() => {
+          $('#edit-profile-lightbox').hide()
+          $('#update-profile').text('Save')
+          Clerk.user.reload();
+        }, 1500)
+    })
 
     // send user back to login if trying to access app without account
     if(!Clerk.user) {

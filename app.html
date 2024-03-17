@@ -68,6 +68,18 @@
                 </div>
             </div>
         </div>
+        <div id="edit-profile-lightbox">
+            <div id="edit-profile">
+                <div class="edit-form">
+                    <i id="edit-profile-close" class="fa-light fa-xmark"></i>
+                    <label for="bio">Bio</label>
+                    <input name="bio" type="text" maxlength="50" class="bio profile-input" placeholder="50 character limit">
+                    <label for="website">Website</label>
+                    <input type="url" name="website" class="website profile-input" placeholder="copy and paste a url">
+                    <button id="update-profile">Save</button>
+                </div>
+            </div>
+        </div>
         <div id="profile-wrap">
             <div class="inner-wrapper">
                 <i class="fa-thin fa-xmark close-profile"></i>
@@ -83,16 +95,20 @@
             </div>
         </div>
         <div id="menu">
+            <i id="edit-mbl-profile-close" class="fa-light fa-xmark"></i>
             <div class="user-box">
                 <img id="user-img">
                 <p id="username"></p>
+                <p id="bio"></p>
+                <a href="" id="website" target="_blank"><i class="fa-sharp fa-light fa-link-simple"></i> Website</a>
                 <p>Scribbles: <span class="scribbles"></span></p>
                 <div class="nav-btns">
                     <button id="open-lightbox"><i class="fa-sharp fa-light fa-feather"></i> Scribble</button>
-                    <button id="open-profile"><i class="fa-light fa-user"></i> Account</button>
+                    <button id="edit-profile-btn"><i class="fa-light fa-pen"></i> Edit Profile</button>
                     <button id="notes-btn"><i class="fa-light fa-sparkles"></i> What's New</button>
                     <button id="pinned"><i class="fa-light fa-bookmark"></i> Pinned</button>
                     <button id="logoff"><i class="fa-light fa-right-from-bracket"></i> Log out</button>
+                    <a id="open-profile" class="account small-nav" href="#/"><i class="fa-light fa-user"></i> Account</a>
                     <a class="learn-more small-nav" href="#/"><i class="fa-light fa-circle-info"></i> Learn More</a>
                     <a class="rules small-nav" href="#/"><i class="fa-light fa-lock"></i> Rules</a>
                 </div>
@@ -116,6 +132,8 @@
                         <li>Complete color overhaul</li>
                         <li>Topic system: filter scribbles through trneding topics.</li>
                         <li>Users can now pin five posts to keep up with conversations.</li>
+                        <li>Users can now add a bio and website link to their profiles.</li>
+                        <li>Mobile UI tweaks.</li>
                     </ul>
                     <h2>What's coming?</h2>
                     <li>More robost profile editing.</li>
