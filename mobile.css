@@ -65,9 +65,9 @@
         padding: 15px;
     }
     .fa-xmark {
-        top: -45px;
-    left: -15px;
-    font-size: 30px;
+        top: -55px;
+        left: -20px;
+        font-size: 30px;
     }
     .home-content {
         padding: 20px 0;
@@ -192,5 +192,11 @@
     }
     #mobile-menu .fa-lock, #mobile-menu .fa-right-from-bracket {
         display: none;
+    }
+    #create-post, #create-reply, #edit-profile, #view-profile {
+        width: calc(100% - 20px);
+    }
+    .input-box, .edit-form, .profile-looker {
+        padding: 20px;
     }
 }

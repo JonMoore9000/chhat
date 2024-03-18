@@ -73,10 +73,28 @@
                 <div class="edit-form">
                     <i id="edit-profile-close" class="fa-light fa-xmark"></i>
                     <label for="bio">Bio</label>
-                    <input name="bio" type="text" maxlength="50" class="bio profile-input" placeholder="50 character limit">
+                    <div class="input-wrap bio-wrap">
+                        <input name="bio" type="text" maxlength="50" class="bio profile-input" placeholder="50 character limit">
+                        <button id="update-bio"><i class="fa-solid fa-check"></i></button>
+                    </div>
                     <label for="website">Website</label>
-                    <input type="url" name="website" class="website profile-input" placeholder="copy and paste a url">
-                    <button id="update-profile">Save</button>
+                    <div class="input-wrap">
+                        <input type="url" name="website" class="website profile-input" placeholder="copy and paste a url">
+                        <button id="update-website"><i class="fa-solid fa-check"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="profile-viewer-lightbox">
+            <div id="view-profile">
+                <div class="profile-looker">
+                    <i id="view-profile-close" class="fa-light fa-xmark"></i>
+                    <img class="view-img" src="" alt="">
+                    <div class="view-box">
+                        <p class="view-username-line"><span class="view-username"></span></p>
+                        <p class="view-bio-line"><span class="view-bio"></span></p>
+                        <a href="" class="view-website" target="_blank"><i class="fa-light fa-link-simple"></i> website</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -100,7 +118,7 @@
                 <img id="user-img">
                 <p id="username"></p>
                 <p id="bio"></p>
-                <a href="" id="website" target="_blank"><i class="fa-sharp fa-light fa-link-simple"></i> Website</a>
+                <a href="" id="website" target="_blank"><i class="fa-regular fa-link-simple"></i> website</a>
                 <p>Scribbles: <span class="scribbles"></span></p>
                 <div class="nav-btns">
                     <button id="open-lightbox"><i class="fa-sharp fa-light fa-feather"></i> Scribble</button>
@@ -127,17 +145,16 @@
                     <i class="fa-light fa-xmark"></i>
                     <h2>What's new?</h2>
                     <ul>
-                        <li>Added in feature to track total scribbles</li>
-                        <li>EMOJIS!</li>
                         <li>Complete color overhaul</li>
                         <li>Topic system: filter scribbles through trneding topics.</li>
                         <li>Users can now pin five posts to keep up with conversations.</li>
                         <li>Users can now add a bio and website link to their profiles.</li>
                         <li>Mobile UI tweaks.</li>
+                        <li>Users can now click on usernames and see a users profile info.</li>
+                        <li>Users can now edit profile bio and website separately.</li>
                     </ul>
                     <h2>What's coming?</h2>
-                    <li>More robost profile editing.</li>
-                    <li>The ability to view other user's profiles.</li>
+                    <li>Some sort of friend/follower system.</li>
                 </div>
             </div>
             <div id="feed-wrapper"></div>

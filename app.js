@@ -7,7 +7,13 @@ let pinArr = []
 let bio
 let website
 const now = new Date();
-let currentDateTime = now.toLocaleString([], {day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute:'2-digit'});
+let currentDateTime = now.toLocaleDateString([], {month: 'short', day: 'numeric', year: 'numeric'});
+
+// profile viewer vars
+let viewer_username
+let viewer_avatar
+let viewer_bio
+let viewer_website
 
 //remove loader
 setTimeout(() => {
@@ -28,6 +34,7 @@ $('#profile-wrap').hide()
 $('#sign-in').hide()
 $('.signup-footer').hide()
 $('#edit-profile-lightbox').hide()
+$('#profile-viewer-lightbox').hide()
 
 $('#open-lightbox, #mobile-post').on('click', () => {
     $('#post-lightbox').show()
@@ -110,6 +117,24 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+$(document).on('click', '.post-meta .username', (e) => {
+    let nbio = $(e.currentTarget).closest('.post-body').find('.sbio').text()
+    let nwebsite = $(e.currentTarget).closest('.post-body').find('.swebsite').text()
+    let nusername = $(e.currentTarget).closest('.post-body').find('.username').text()
+    let img = $(e.currentTarget).closest('.post-body').find('img').attr('src')
+    console.log(img)
+    $('.view-username').text(nusername)
+    $('.view-bio').text(nbio)
+    $('.view-website').attr('href', nwebsite)
+    $('.view-img').attr('src', img)
+    $('#profile-viewer-lightbox').show()
+    console.log('username')
+})
+
+$('#view-profile-close').on('click', () => {
+    $('#profile-viewer-lightbox').hide()
+})
 
 /*---------------------
 MOBILE BTNS
@@ -207,7 +232,9 @@ const sendPost = (post) => {
             date: currentDateTime,
             user: user,
             avatar: avatar,
-            topic: topic
+            topic: topic,
+            bio: bio,
+            website: website
         }),
         contentType: "application/json",
         complete: () => console.log("post sent to db")
@@ -299,11 +326,9 @@ const showPost = (data) => {
     scribbles = 0
     data.reverse()
     $('.thread').hide()
-    //console.log(data)
     let posts = ''
     
     posts = data.map((item) => {
-
         let reply = ''
         setTimeout(() => {
             if(user == item.user) {
@@ -334,6 +359,8 @@ const showPost = (data) => {
         <div class="post-right">
         <div class="post-meta">
         <p class="username">${item.user}</p> 
+        <p class="sbio hidden">${item.bio}</p>
+        <p class="swebsite hidden">${item.website}</p>
         <i class="fa-solid fa-circle"></i>
         <p class="date">${item.date}</p>
         <i class="fa-solid fa-circle"></i>
@@ -456,6 +483,8 @@ const showTopicPost = (data) => {
             <div class="post-right">
             <div class="post-meta">
             <p class="username">${item.user}</p> 
+            <p class="sbio hidden">${item.bio}</p>
+            <p class="swebsite hidden">${item.website}</p>
             <i class="fa-solid fa-circle"></i>
             <p class="date">${item.date}</p>
             <i class="fa-solid fa-circle"></i>
@@ -516,7 +545,9 @@ const showPinPost = (data) => {
 
             <div class="post-right">
             <div class="post-meta">
-            <p class="username">${item.user}</p> 
+            <p class="username">${item.user}</p>
+            <p class="sbio hidden">${item.bio}</p>
+            <p class="swebsite hidden">${item.website}</p>
             <i class="fa-solid fa-circle"></i>
             <p class="date">${item.date}</p>
             <i class="fa-solid fa-circle"></i>

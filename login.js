@@ -107,23 +107,38 @@ script.addEventListener('load', async function () {
         })
     } 
 
-    // update profile info
-    $('#update-profile').on('click', () => {
+    // update profile bio
+    $('#update-bio').on('click', () => {
       let nbio = $('.bio').val()
-      let nwebsite = $('.website').val()
         Clerk.user.update({ 
           unsafeMetadata : {
             "bio": nbio,
+            "website": website,
+            "arr": pinArr
+          }
+        })
+        Swal.fire({
+          icon: "success",
+          title: "Profile bio updated.",
+          buttonsStyling: false,
+        });
+    })
+
+    // update profile website
+    $('#update-website').on('click', () => {
+      let nwebsite = $('.website').val()
+        Clerk.user.update({ 
+          unsafeMetadata : {
+            "bio": bio,
             "website": nwebsite,
             "arr": pinArr
           }
         })
-        $('#update-profile').text('Processing...')
-        setTimeout(() => {
-          $('#edit-profile-lightbox').hide()
-          $('#update-profile').text('Save')
-          Clerk.user.reload();
-        }, 1500)
+        Swal.fire({
+          icon: "success",
+          title: "Profile website updated.",
+          buttonsStyling: false,
+        });
     })
 
     // send user back to login if trying to access app without account

@@ -246,7 +246,7 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--light);
   }
 
-#post-lightbox, #reply-lightbox, #edit-profile-lightbox {
+#post-lightbox, #reply-lightbox, #edit-profile-lightbox, #profile-viewer-lightbox {
     position: absolute;
     left: 0;
     top: 0;
@@ -279,19 +279,34 @@ img#prefile-img-preview {
     margin-right: 20px;
 }
 
-#update-profile {
-    padding: 10px 30px;
+#update-bio, #update-website {
+    padding: 2px 15px 0 15px;
     background: var(--light);
     color: #fff;
     border-radius: 5px;
     border: none;
-    margin-top: 20px;
     transition: linear .15s;
+    height: 40px;
+    width: 46px;
 }
 
-#update-profile:hover {
+.input-wrap button i {
+    font-size: 18px;
+}
+
+#update-bio:hover, #update-website:hover {
     background: var(--lighter);
     cursor: pointer;
+}
+
+.input-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bio-wrap {
+    margin-bottom: 20px;
 }
 
 #website {
@@ -313,10 +328,6 @@ img#prefile-img-preview {
     color: var(--lighter);
 }
 
-.bio {
-    margin-bottom: 20px;
-}
-
 .profile-input::placeholder {
     color: var(--light);
 }
@@ -324,6 +335,7 @@ img#prefile-img-preview {
 .profile-input {
     background: var(--medium);
     border-radius: 5px;
+    width: calc(100% - 55px);
 }
 
 input#myFile {
@@ -339,14 +351,14 @@ input {
     width: 100%;
 }
 
-#create-post, #create-reply, #edit-profile {
+#create-post, #create-reply, #edit-profile, #view-profile {
     width: calc(100% - 80px);
     margin: auto;
     position: relative;
     height: 100%;
 }
 
-.input-box, .edit-form {
+.input-box, .edit-form, .profile-looker {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -357,6 +369,58 @@ input {
     padding: 40px;
     border-radius: 5px;
     border: 1px solid var(--medium);
+}
+
+.view-box i {
+    font-size: 14px;
+}
+
+.view-box a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.post-meta .username:hover {
+    color: #a1c2b6;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.profile-looker {
+    display: flex;
+    align-items: center;
+}
+
+span.view-username {
+    font-size: 20px;
+}
+
+.view-username-line {
+    margin: 0;
+}
+
+.view-box {
+    margin-left: 20px;
+}
+
+.view-bio-line {
+    margin: 10px 0;
+}
+
+span.view-bio {
+    font-style: italic;
+    color: var(--light);
+}
+
+#view-profile-close {
+    top: -30px;
+    left: 0px;
+    font-size: 28px;
+}
+
+img.view-img {
+    width: 100px;
+    border-radius: 5px;
 }
 
 .post-title {
@@ -522,7 +586,7 @@ p.topic-tag {
     font-size: 3px;
     color: var(--light);
     margin: 0 5px;
-    padding-top: 7px;
+    padding-bottom: 1px;
 }
 
 #feed .post-left img {
@@ -537,6 +601,7 @@ p.topic-tag {
 .post-meta {
     display: flex;
     font-size: 13px;
+    align-items: center;
 }
 
 .content {
@@ -575,6 +640,7 @@ p.topic-tag {
 .username {
     color: var(--lighter);
     margin: 0;
+    padding: 2px 0
 }
 
 .user-box {
